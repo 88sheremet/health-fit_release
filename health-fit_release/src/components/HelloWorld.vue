@@ -1,12 +1,9 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-page-container>
       <q-page class="bg-grey-1">
-
         <!-- HEADER -->
         <div class="q-pa-md">
-
           <div class="row items-center justify-between">
             <div>
               <div class="text-h6">Привет 👋</div>
@@ -52,7 +49,6 @@
               color="positive"
             />
           </q-card>
-
         </div>
 
         <!-- QUICK ACTIONS -->
@@ -88,7 +84,6 @@
 
         <!-- TASK LIST -->
         <div class="q-px-md">
-
           <q-card
             v-for="task in tasks"
             :key="task.id"
@@ -106,18 +101,13 @@
                   </div>
                 </div>
 
-                <q-badge
-                  v-if="task.done"
-                  color="positive"
-                  label="Готово"
-                />
+                <q-badge v-if="task.done" color="positive" label="Готово" />
               </div>
             </q-card-section>
 
             <q-separator />
 
             <q-card-actions align="between">
-
               <q-btn
                 flat
                 color="primary"
@@ -132,59 +122,51 @@
                 :disable="task.done"
                 @click="completeTask(task)"
               />
-
             </q-card-actions>
           </q-card>
-
         </div>
-
       </q-page>
     </q-page-container>
-
   </q-layout>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
 /* STATE */
-const day = ref(1)
-const streak = ref(3)
+const day = ref(1);
+const streak = ref(3);
 
-const energy = ref(40)
-const maxEnergy = 100
+const energy = ref(40);
+const maxEnergy = 100;
 
 const tasks = ref([
-  { id: 1, title: 'Почистить зубы', reward: 5, done: false },
-  { id: 2, title: 'Сделать разминку', reward: 10, done: false },
-  { id: 3, title: 'Выпить воду', reward: 5, done: false }
-])
+  { id: 1, title: "Почистить зубы", reward: 5, done: false },
+  { id: 2, title: "Сделать разминку", reward: 10, done: false },
+  { id: 3, title: "Выпить воду", reward: 5, done: false },
+]);
 
 /* COMPUTED */
-const completedTasks = computed(() =>
-  tasks.value.filter(t => t.done).length
-)
+const completedTasks = computed(() => tasks.value.filter((t) => t.done).length);
 
 const progress = computed(() =>
-  tasks.value.length
-    ? completedTasks.value / tasks.value.length
-    : 0
-)
+  tasks.value.length ? completedTasks.value / tasks.value.length : 0
+);
 
 /* ACTIONS */
 function startTask(task) {
-  console.log('start:', task.title)
+  console.log("start:", task.title);
 }
 
 function completeTask(task) {
-  if (task.done) return
+  if (task.done) return;
 
-  task.done = true
-  energy.value = Math.min(maxEnergy, energy.value + task.reward)
+  task.done = true;
+  energy.value = Math.min(maxEnergy, energy.value + task.reward);
 }
 
 function quickAdd(value) {
-  energy.value = Math.min(maxEnergy, energy.value + value)
+  energy.value = Math.min(maxEnergy, energy.value + value);
 }
 </script>
 
