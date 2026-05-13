@@ -1,5 +1,5 @@
 <template>
-  <div class="questions-page">
+  <div class="questions-page" ref="pageRef">
     <!-- HEADER -->
     <div class="header">
       <div class="header-top">
@@ -71,7 +71,7 @@
           </button>
         </div>
 
-        <!-- LABELS -->
+        <!-- SCALE -->
         <div class="scale-labels">
           <span> Хорошо </span>
 
@@ -106,6 +106,8 @@ const $q = useQuasar();
 
 const showValidation = ref(false);
 
+const pageRef = ref();
+
 const answeredQuestions = computed(() => {
   return screeningStore.currentBlockData.questions.filter(
     (question) => screeningStore.answers[question.id]
@@ -125,13 +127,11 @@ const goNext = () => {
 
       timeout: 2000,
 
-      color: "white",
+      color: "negative",
 
-      textColor: "dark",
+      textColor: "white",
 
       icon: "warning",
-
-      classes: "custom-notify",
     });
 
     return;
@@ -140,20 +140,41 @@ const goNext = () => {
   screeningStore.nextBlock();
 
   showValidation.value = false;
+
+  pageRef.value?.scrollTo({
+    top: 0,
+
+    behavior: "smooth",
+  });
 };
 </script>
 
 <style scoped lang="scss">
 .questions-page {
-  min-height: 100vh;
+  height: 100vh;
 
-  padding: 24px 20px 120px;
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+
+  padding: 24px 20px 140px;
 
   background: linear-gradient(180deg, #f5f9ff 0%, #eef7f2 100%);
 }
 
+.questions-page::-webkit-scrollbar {
+  width: 6px;
+}
+
+.questions-page::-webkit-scrollbar-thumb {
+  background: rgba(76, 175, 80, 0.35);
+
+  border-radius: 20px;
+}
+
 .header {
   position: sticky;
+
   top: 0;
 
   z-index: 10;
@@ -166,7 +187,9 @@ const goNext = () => {
 
 .header-top {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   margin-bottom: 14px;
@@ -174,6 +197,7 @@ const goNext = () => {
 
 .block-counter {
   font-size: 14px;
+
   font-weight: 700;
 
   color: #4caf50;
@@ -181,6 +205,7 @@ const goNext = () => {
 
 .questions-counter {
   font-size: 14px;
+
   font-weight: 600;
 
   color: #7b8190;
@@ -192,11 +217,13 @@ const goNext = () => {
 
 .title-section {
   margin-top: 24px;
+
   margin-bottom: 32px;
 }
 
 .title {
   font-size: 32px;
+
   font-weight: 700;
 
   line-height: 1.15;
@@ -208,6 +235,7 @@ const goNext = () => {
 
 .subtitle {
   font-size: 16px;
+
   line-height: 1.6;
 
   color: #6b7280;
@@ -215,6 +243,7 @@ const goNext = () => {
 
 .questions-list {
   display: flex;
+
   flex-direction: column;
 
   gap: 18px;
@@ -236,6 +265,8 @@ const goNext = () => {
 
 .question-card.invalid {
   border: 2px solid rgba(244, 67, 54, 0.35);
+
+  animation: shake 0.3s ease;
 }
 
 .question-top {
@@ -248,12 +279,15 @@ const goNext = () => {
 
 .question-number {
   width: 34px;
+
   height: 34px;
 
   border-radius: 12px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   background: rgba(76, 175, 80, 0.12);
@@ -261,6 +295,7 @@ const goNext = () => {
   color: #43a047;
 
   font-size: 14px;
+
   font-weight: 700;
 
   flex-shrink: 0;
@@ -268,6 +303,7 @@ const goNext = () => {
 
 .question-text {
   font-size: 17px;
+
   font-weight: 600;
 
   line-height: 1.5;
@@ -277,6 +313,7 @@ const goNext = () => {
 
 .answers {
   display: flex;
+
   justify-content: space-between;
 
   gap: 10px;
@@ -284,9 +321,11 @@ const goNext = () => {
 
 .answer-btn {
   width: 54px;
+
   height: 54px;
 
   border: none;
+
   border-radius: 18px;
 
   background: #f3f4f6;
@@ -294,6 +333,7 @@ const goNext = () => {
   color: #374151;
 
   font-size: 17px;
+
   font-weight: 700;
 
   cursor: pointer;
@@ -317,6 +357,7 @@ const goNext = () => {
 
 .scale-labels {
   display: flex;
+
   justify-content: space-between;
 
   margin-top: 14px;
@@ -330,7 +371,9 @@ const goNext = () => {
   position: fixed;
 
   left: 0;
+
   right: 0;
+
   bottom: 0;
 
   padding: 18px 20px 26px;
@@ -344,11 +387,13 @@ const goNext = () => {
 
 .next-btn {
   width: 100%;
+
   height: 60px;
 
   border-radius: 20px;
 
   font-size: 17px;
+
   font-weight: 700;
 
   background: linear-gradient(135deg, #6bcb77 0%, #4caf50 100%);
@@ -356,5 +401,27 @@ const goNext = () => {
   color: white;
 
   box-shadow: 0 10px 30px rgba(76, 175, 80, 0.35);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+
+  75% {
+    transform: translateX(-4px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 </style>
