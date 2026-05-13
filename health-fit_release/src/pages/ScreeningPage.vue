@@ -62,7 +62,21 @@
           Твой путь начинается с понимания текущего состояния
         </div>
 
-        <q-btn unelevated no-caps class="start-btn" label="Начать скрининг" @click="$router.push('/questions')"/>
+        <q-btn
+          unelevated
+          no-caps
+          class="start-btn"
+          label="Начать скрининг"
+          @click="$router.push('/questions')"
+        />
+
+        <q-btn
+          flat
+          no-caps
+          class="skip-btn"
+          label="Пропустить"
+          @click="$router.push('/menu')"
+        />
       </div>
     </div>
   </div>

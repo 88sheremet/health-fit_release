@@ -21,6 +21,8 @@ interface BlockScores {
 
 export const useScreeningStore = defineStore("screening", {
   state: () => ({
+    screeningCompleted: false,
+
     currentBlock: 0,
 
     answers: {} as Answers,
@@ -121,6 +123,10 @@ export const useScreeningStore = defineStore("screening", {
   },
 
   actions: {
+     completeScreening() {
+      this.screeningCompleted = true
+    },
+    
     setAnswer(questionId: number, value: number) {
       this.answers[questionId] = value;
     },

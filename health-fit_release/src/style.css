@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -83,19 +83,14 @@ button:focus-visible {
 
   font-weight: 600;
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 .question-card.invalid {
+  border: 2px solid rgba(244, 67, 54, 0.35);
 
-  border:
-    2px solid rgba(244, 67, 54, 0.35);
-
-  animation:
-    shake .3s ease;
+  animation: shake 0.3s ease;
 }
 @keyframes shake {
-
   0% {
     transform: translateX(0);
   }
@@ -115,5 +110,4 @@ button:focus-visible {
   100% {
     transform: translateX(0);
   }
-
 }
