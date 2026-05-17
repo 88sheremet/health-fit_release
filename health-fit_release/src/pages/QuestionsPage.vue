@@ -116,9 +116,10 @@
 <script setup lang="ts">
 import { computed, ref, nextTick } from "vue";
 import { useScreeningStore } from "../stores/screening";
+import { useRouter } from "vue-router";
 
 const screeningStore = useScreeningStore();
-
+const router = useRouter();
 const pageRef = ref<HTMLElement | null>(null);
 const questionRefs = ref<any[]>([]);
 
@@ -178,10 +179,36 @@ const goNext = async () => {
 
   if (!isValid) {
     showAlert();
+
     await scrollToFirstEmpty();
+
     return;
   }
 
+  /**
+   * если последний блок
+   */
+  if (screeningStore.isLastBlock()) {
+    screeningStore.calculateCurrentBlockScore();
+
+    screeningStore.completeScreening();
+
+    const result = screeningStore.dominantProblem;
+
+    if (result === "physical") {
+      router.push("/physical-result");
+    } else if (result === "food") {
+      router.push("/food-result");
+    } else {
+      router.push("/mind-result");
+    }
+
+    return;
+  }
+
+  /**
+   * следующий блок
+   */
   screeningStore.nextBlock();
 
   showValidation.value = false;
