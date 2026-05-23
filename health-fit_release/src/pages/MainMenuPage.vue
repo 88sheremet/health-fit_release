@@ -123,7 +123,7 @@ const openTab = (tab: string) => {
   font-size: 32px;
   font-weight: 700;
 
-  color: #1d1d1f;
+ color: var(--black1);
 
   margin-bottom: 12px;
 }
@@ -133,7 +133,7 @@ const openTab = (tab: string) => {
 
   line-height: 1.5;
 
-  color: #6b7280;
+  color: var(--grey2);
 }
 
 .tabs {
@@ -148,7 +148,7 @@ const openTab = (tab: string) => {
 
   border-radius: 24px;
 
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(12px);
 
@@ -175,7 +175,7 @@ const openTab = (tab: string) => {
   font-size: 20px;
   font-weight: 600;
 
-  color: #1d1d1f;
+ color: var(--black1);
 
   margin-bottom: 8px;
 }
@@ -185,6 +185,6 @@ const openTab = (tab: string) => {
 
   line-height: 1.5;
 
-  color: #6b7280;
+color: var(--grey2);
 }
 </style>

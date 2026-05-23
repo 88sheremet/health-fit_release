@@ -1,7 +1,6 @@
 <template>
   <div class="screening-page">
     <div class="screening-container">
-      <!-- TOP -->
       <div class="top-section">
         <div class="hero-icon">
           <div class="glow"></div>
@@ -17,7 +16,6 @@
         </div>
       </div>
 
-      <!-- INFO CARD -->
       <q-card flat class="info-card">
         <div class="info-item">
           <div class="info-icon green">
@@ -56,7 +54,6 @@
         </div>
       </q-card>
 
-      <!-- BOTTOM -->
       <div class="bottom-section">
         <div class="hint-text">
           Твой путь начинается с понимания текущего состояния
@@ -125,7 +122,7 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(12px);
 }
@@ -160,7 +157,7 @@
 
   line-height: 1.15;
 
-  color: #1d1d1f;
+ color: var(--black1);
 
   margin-bottom: 16px;
 }
@@ -179,7 +176,7 @@
 
   border-radius: 28px;
 
-  background: rgba(255, 255, 255, 0.72);
+   background: var(--hero-icon);
 
   backdrop-filter: blur(16px);
 
@@ -214,24 +211,24 @@
 
 .green {
   background: rgba(76, 175, 80, 0.12);
-  color: #43a047;
+  color: var(--green);
 }
 
 .blue {
   background: rgba(33, 150, 243, 0.12);
-  color: #1e88e5;
+  color: var(--blue);
 }
 
 .orange {
   background: rgba(255, 152, 0, 0.12);
-  color: #fb8c00;
+  color: var( --orange);
 }
 
 .info-title {
   font-size: 17px;
   font-weight: 600;
 
-  color: #1d1d1f;
+ color: var(--black1);
 
   margin-bottom: 4px;
 }
@@ -240,7 +237,7 @@
   font-size: 15px;
   line-height: 1.5;
 
-  color: #6b7280;
+color: var(--grey2);
 }
 
 .bottom-section {
@@ -256,7 +253,7 @@
   font-size: 15px;
   line-height: 1.5;
 
-  color: #7b8190;
+  color: var(grey);
 
   margin-bottom: 22px;
 }

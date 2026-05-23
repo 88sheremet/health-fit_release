@@ -1,8 +1,6 @@
 <template>
-  <!-- <q-layout view="lHh Lpr lFf"> -->
   <div class="welcome-page flex flex-center">
     <div class="welcome-container">
-      <!-- HERO -->
       <div class="hero-section">
         <div class="hero-icon">
           <div class="glow"></div>
@@ -17,7 +15,6 @@
         </p>
       </div>
 
-      <!-- BENEFITS -->
       <q-card flat class="benefits-card">
         <div class="benefit-item">
           <div class="benefit-icon"><q-icon name="psychology" /></div>
@@ -37,7 +34,6 @@
         </div>
       </q-card>
 
-      <!-- BUTTON -->
       <div class="bottom-section">
         <q-btn
           unelevated
@@ -51,7 +47,6 @@
       </div>
     </div>
   </div>
-  <!-- </q-layout> -->
 </template>
 
 <script setup lang="ts">
@@ -89,19 +84,14 @@
 
 .hero-icon {
   position: relative;
-
   width: 120px;
   height: 120px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 28px;
-
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(12px);
 
@@ -114,36 +104,26 @@
 
 .glow {
   position: absolute;
-
   width: 90px;
   height: 90px;
-
   border-radius: 50%;
-
   background: rgba(255, 215, 0, 0.25);
-
   filter: blur(22px);
-
   animation: pulse 3s infinite;
 }
 
 .title {
   font-size: 36px;
   font-weight: 700;
-
   line-height: 1.1;
-
   margin: 0 0 16px;
-
-  color: #1d1d1f;
+ color: var(--black1);
 }
 
 .subtitle {
   font-size: 18px;
   line-height: 1.6;
-
   color: #5f6368;
-
   margin: 0;
 }
 
@@ -154,7 +134,7 @@
 
   border-radius: 28px;
 
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(14px);
 
@@ -193,7 +173,7 @@
   font-size: 16px;
   line-height: 1.4;
 
-  color: #1d1d1f;
+ color: var(--black1);
 
   font-weight: 500;
 }
@@ -207,17 +187,12 @@
 .start-btn {
   width: 100%;
   height: 60px;
-
   border-radius: 18px;
-
   font-size: 18px;
   font-weight: 700;
-
-  background: linear-gradient(135deg, #6bcb77 0%, #4caf50 100%);
-
-  color: white;
-
-  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.35);
+  background: var(--start-btn);
+  color: var(--white);
+  box-shadow: var(--start-btn-shadow);
 }
 
 .hint-text {
@@ -227,7 +202,7 @@
 
   font-size: 14px;
 
-  color: #7b8190;
+  color: var(--grey);
 }
 
 @keyframes pulse {

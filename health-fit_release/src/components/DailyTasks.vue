@@ -2,7 +2,6 @@
   <q-layout view="lHh Lpr lFf">
     <q-page-container>
       <q-page class="bg-grey-1">
-        <!-- HEADER -->
         <div class="q-pa-md">
           <div class="row items-center justify-between">
             <div>
@@ -17,7 +16,6 @@
             </q-avatar>
           </div>
 
-          <!-- ENERGY -->
           <q-card class="q-mt-md q-pa-md bg-primary text-white">
             <div class="row items-center justify-between">
               <div>
@@ -36,7 +34,6 @@
             </div>
           </q-card>
 
-          <!-- DAILY GOAL -->
           <q-card class="q-mt-md q-pa-md">
             <div class="text-subtitle2">Цель дня</div>
             <div class="text-h6">
@@ -51,7 +48,6 @@
           </q-card>
         </div>
 
-        <!-- QUICK ACTIONS -->
         <div class="q-px-md row q-col-gutter-sm q-mb-md">
           <div class="col-4">
             <q-btn
@@ -82,7 +78,6 @@
           </div>
         </div>
 
-        <!-- TASK LIST -->
         <div class="q-px-md">
           <q-card
             v-for="task in tasks"
@@ -133,7 +128,6 @@
 <script setup>
 import { ref, computed } from "vue";
 
-/* STATE */
 const day = ref(1);
 const streak = ref(3);
 
@@ -146,14 +140,12 @@ const tasks = ref([
   { id: 3, title: "Выпить воду", reward: 5, done: false },
 ]);
 
-/* COMPUTED */
 const completedTasks = computed(() => tasks.value.filter((t) => t.done).length);
 
 const progress = computed(() =>
   tasks.value.length ? completedTasks.value / tasks.value.length : 0
 );
 
-/* ACTIONS */
 function startTask(task) {
   console.log("start:", task.title);
 }

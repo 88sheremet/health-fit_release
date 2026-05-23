@@ -26,7 +26,6 @@
       </div>
     </q-card>
 
-    <!-- Новая карточка: влияние на физическое состояние -->
     <q-card flat class="info-card">
       <div class="info-title">💪 Как это связано с физическим состоянием</div>
 
@@ -37,7 +36,6 @@
       </div>
     </q-card>
 
-    <!-- Новая карточка: влияние на нервную систему -->
     <q-card flat class="info-card">
       <div class="info-title">🧠 Связь с нервной системой</div>
 
@@ -47,7 +45,6 @@
       </div>
     </q-card>
 
-    <!-- Карточка восстановления с общим подходом -->
     <q-card flat class="recovery-card">
       <div class="info-title">✨ Что восстановит все три сферы</div>
 
@@ -66,15 +63,12 @@
 <style scoped lang="scss">
 .result-page {
   min-height: 100vh;
-
   padding: 24px 20px 120px;
-
-  background: linear-gradient(180deg, #f4fff5 0%, #fcfffd 100%);
+  background: var(--food-result-btn);
 }
 
 .hero {
   text-align: center;
-
   margin-bottom: 32px;
 }
 
@@ -92,7 +86,7 @@
 
   font-size: 52px;
 
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--hero-icon);
 
   box-shadow: 0 10px 40px rgba(76, 175, 80, 0.2);
 }
@@ -104,7 +98,7 @@
 
   line-height: 1.15;
 
-  color: #1d1d1f;
+  color: var(black1);
 
   margin-bottom: 16px;
 }
@@ -114,7 +108,7 @@
 
   line-height: 1.6;
 
-  color: #6b7280;
+  color: var(--grey2);
 }
 
 .result-card,
@@ -126,7 +120,7 @@
 
   margin-bottom: 18px;
 
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(16px);
 
@@ -138,7 +132,7 @@
 
   font-weight: 700;
 
-  color: #43a047;
+  color: var(--green);
 
   margin-bottom: 14px;
 }
@@ -188,7 +182,7 @@
 
   line-height: 1.7;
 
-  color: #6b7280;
+  color: var(--grey2);
 }
 
 .main-btn {

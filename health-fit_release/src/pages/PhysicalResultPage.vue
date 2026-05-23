@@ -26,7 +26,6 @@
       </div>
     </q-card>
 
-    <!-- Новая карточка: влияние на питание -->
     <q-card flat class="info-card">
       <div class="info-title">🍽️ Как это связано с питанием</div>
 
@@ -37,7 +36,6 @@
       </div>
     </q-card>
 
-    <!-- Новая карточка: влияние на нервную систему -->
     <q-card flat class="info-card">
       <div class="info-title">🧠 Связь с нервной системой</div>
 
@@ -47,7 +45,6 @@
       </div>
     </q-card>
 
-    <!-- Карточка восстановления с общим подходом -->
     <q-card flat class="recovery-card">
       <div class="info-title">✨ Что восстановит все три сферы</div>
 
@@ -66,35 +63,26 @@
 <style scoped lang="scss">
 .result-page {
   min-height: 100vh;
-
   padding: 24px 20px 120px;
-
-  background: linear-gradient(180deg, #fff6f1 0%, #fffdfb 100%);
+  background: var(--result-page-btn);
 }
 
 .hero {
   text-align: center;
-
   margin-bottom: 32px;
 }
 
 .hero-icon {
   width: 110px;
   height: 110px;
-
   margin: 0 auto 24px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 52px;
-
-  background: rgba(255, 255, 255, 0.7);
-
-  box-shadow: 0 10px 40px rgba(255, 152, 0, 0.2);
+  background: var(--hero-icon);
+  box-shadow: var(--hero-icon-shadow);
 }
 
 .hero-title {
@@ -104,7 +92,7 @@
 
   line-height: 1.15;
 
-  color: #1d1d1f;
+ color: var(--black1);
 
   margin-bottom: 16px;
 }
@@ -114,7 +102,7 @@
 
   line-height: 1.6;
 
-  color: #6b7280;
+color: var(--grey2);
 }
 
 .result-card,
@@ -126,7 +114,7 @@
 
   margin-bottom: 18px;
 
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(16px);
 
@@ -138,7 +126,7 @@
 
   font-weight: 700;
 
-  color: #fb8c00;
+  color: var(--orange);
 
   margin-bottom: 14px;
 }
@@ -150,7 +138,7 @@
 
   line-height: 1.2;
 
-  color: #1d1d1f;
+ color: var(--black1);
 }
 
 .divider {
@@ -188,7 +176,7 @@
 
   line-height: 1.7;
 
-  color: #6b7280;
+ color: var(--grey2);
 }
 
 .main-btn {
@@ -204,9 +192,9 @@
 
   font-weight: 700;
 
-  background: linear-gradient(135deg, #ffb74d 0%, #fb8c00 100%);
+  background: var(--main-btn);
 
-  color: white;
+  color: var(--white);
 
   box-shadow: 0 10px 30px rgba(251, 140, 0, 0.35);
 }

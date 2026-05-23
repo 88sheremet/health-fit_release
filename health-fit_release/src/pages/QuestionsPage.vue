@@ -1,6 +1,5 @@
 <template>
   <div class="questions-page" ref="pageRef">
-    <!-- HEADER -->
     <div class="header">
       <div class="header-top">
         <div class="block-counter">
@@ -24,7 +23,6 @@
       />
     </div>
 
-    <!-- TITLE -->
     <div class="title-section">
       <div class="title">
         {{ screeningStore.currentBlockData.title }}
@@ -33,7 +31,6 @@
       <div class="subtitle">Оцени каждое утверждение по шкале от 1 до 5</div>
     </div>
 
-    <!-- QUESTIONS -->
     <div class="questions-list">
       <q-card
         v-for="(question, index) in screeningStore.currentBlockData.questions"
@@ -77,7 +74,6 @@
       </q-card>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
       <q-btn
         unelevated
@@ -87,29 +83,6 @@
         @click="goNext"
       />
     </div>
-
-    <!-- КРАСИВЫЙ ALERT -->
-    <transition name="fade">
-      <div v-if="showErrorAlert" class="custom-alert">
-        <div class="alert-card">
-          <q-icon name="warning_amber" class="alert-icon" />
-
-          <div class="alert-title">Не все вопросы заполнены</div>
-
-          <div class="alert-text">
-            Ответь на выделенный вопрос, чтобы продолжить
-          </div>
-
-          <q-btn
-            flat
-            no-caps
-            class="alert-btn"
-            label="Понял"
-            @click="showErrorAlert = false"
-          />
-        </div>
-      </div>
-    </transition>
   </div>
 </template>
 
@@ -117,18 +90,17 @@
 import { computed, ref, nextTick } from "vue";
 import { useScreeningStore } from "../stores/screening";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 const screeningStore = useScreeningStore();
 const router = useRouter();
+const $q = useQuasar();
+
 const pageRef = ref<HTMLElement | null>(null);
 const questionRefs = ref<any[]>([]);
 
 const showValidation = ref(false);
-const showErrorAlert = ref(false);
 
-/**
- * заполненные ответы
- */
 const answeredQuestions = computed(
   () =>
     screeningStore.currentBlockData.questions.filter(
@@ -136,9 +108,6 @@ const answeredQuestions = computed(
     ).length
 );
 
-/**
- * скролл к первому пустому вопросу
- */
 const scrollToFirstEmpty = async () => {
   await nextTick();
 
@@ -158,36 +127,36 @@ const scrollToFirstEmpty = async () => {
   });
 };
 
-/**
- * кастомный красивый alert
- */
-const showAlert = () => {
-  showErrorAlert.value = true;
-
-  setTimeout(() => {
-    showErrorAlert.value = false;
-  }, 2500);
+const showValidationAlert = () => {
+  $q.notify({
+    type: "warning",
+    message: "Не все вопросы заполнены",
+    caption: "Ответь на выделенный вопрос, чтобы продолжить",
+    position: "top",
+    timeout: 2500,
+    progress: true,
+    actions: [
+      {
+        label: "OK",
+        color: "white",
+      },
+    ],
+  });
 };
 
-/**
- * next block
- */
 const goNext = async () => {
   showValidation.value = true;
 
   const isValid = screeningStore.validateCurrentBlock();
 
   if (!isValid) {
-    showAlert();
+    showValidationAlert();
 
     await scrollToFirstEmpty();
 
     return;
   }
 
-  /**
-   * если последний блок
-   */
   if (screeningStore.isLastBlock()) {
     screeningStore.calculateCurrentBlockScore();
 
@@ -206,9 +175,6 @@ const goNext = async () => {
     return;
   }
 
-  /**
-   * следующий блок
-   */
   screeningStore.nextBlock();
 
   showValidation.value = false;
@@ -241,7 +207,6 @@ const goNext = async () => {
     linear-gradient(180deg, #f8fbff 0%, #eef7f2 100%);
 }
 
-/* ===== HEADER ===== */
 .header {
   position: sticky;
   top: 0;
@@ -251,7 +216,7 @@ const goNext = async () => {
 
   border-radius: 0 0 22px 22px;
 
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--hero-icon);
   backdrop-filter: blur(20px);
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -260,17 +225,16 @@ const goNext = async () => {
 .block-counter {
   font-size: 13px;
   font-weight: 800;
-  color: #22c55e;
+  color: var(--green);
   letter-spacing: 0.3px;
 }
 
 .questions-counter {
   font-size: 13px;
   font-weight: 600;
-  color: #6b7280;
+color: var(--grey2);
 }
 
-/* ===== TITLE ===== */
 .title-section {
   margin-top: 26px;
   margin-bottom: 30px;
@@ -284,7 +248,7 @@ const goNext = async () => {
 
   line-height: 1.15;
 
-  color: #111827;
+  color: var(--black1);
 
   letter-spacing: -0.5px;
 }
@@ -295,23 +259,21 @@ const goNext = async () => {
   font-size: 15px;
   line-height: 1.6;
 
-  color: #6b7280;
+ color: var(--grey2);
 }
 
-/* ===== LIST ===== */
 .questions-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* ===== CARD ===== */
 .question-card {
   padding: 22px;
 
   border-radius: 26px;
 
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--hero-icon);
   backdrop-filter: blur(20px);
 
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -333,7 +295,6 @@ const goNext = async () => {
   animation: shake 0.3s ease;
 }
 
-/* ===== QUESTION HEADER ===== */
 .question-top {
   display: flex;
   gap: 14px;
@@ -371,7 +332,6 @@ const goNext = async () => {
   color: #111827;
 }
 
-/* ===== ANSWERS ===== */
 .answers {
   display: flex;
   justify-content: space-between;
@@ -412,7 +372,6 @@ const goNext = async () => {
   box-shadow: 0 12px 28px rgba(34, 197, 94, 0.35);
 }
 
-/* ===== SCALE ===== */
 .scale-labels {
   display: flex;
   justify-content: space-between;
@@ -423,7 +382,6 @@ const goNext = async () => {
   color: #9ca3af;
 }
 
-/* ===== FOOTER ===== */
 .footer {
   position: fixed;
   left: 0;
@@ -432,7 +390,7 @@ const goNext = async () => {
 
   padding: 18px 20px 26px;
 
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--hero-icon);
   backdrop-filter: blur(24px);
 
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -467,7 +425,6 @@ const goNext = async () => {
   transform: scale(0.98);
 }
 
-/* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
