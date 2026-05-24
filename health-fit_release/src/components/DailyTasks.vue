@@ -122,12 +122,16 @@
         </div>
       </q-page>
     </q-page-container>
+
+    <BottomNavigation />
   </q-layout>
+
+  
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
-
+import BottomNavigation from "../components/BottomNavigation.vue";
 const day = ref(1);
 const streak = ref(3);
 

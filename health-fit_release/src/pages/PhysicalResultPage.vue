@@ -56,14 +56,16 @@
       </div>
     </q-card>
 
-    <q-btn unelevated no-caps class="main-btn" label="Начать восстановление" />
+    <div class="bottom-action">
+    <q-btn unelevated no-caps class="main-btn" label="Начать восстановление" @click="$router.push('/daily')"/>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .result-page {
   min-height: 100vh;
-  padding: 24px 20px 120px;
+  padding: 24px 20px 140px;
   background: var(--result-page-btn);
 }
 
@@ -178,24 +180,27 @@ color: var(--grey2);
 
  color: var(--grey2);
 }
+.bottom-action {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 100;
+}
 
 .main-btn {
   width: 100%;
-
   height: 62px;
-
   border-radius: 22px;
-
-  margin-top: 24px;
-
   font-size: 18px;
-
   font-weight: 700;
-
   background: var(--main-btn);
-
   color: var(--white);
-
-  box-shadow: 0 10px 30px rgba(251, 140, 0, 0.35);
+ box-shadow: 0 10px 30px rgba(251, 140, 0, 0.35);
 }
 </style>
