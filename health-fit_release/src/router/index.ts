@@ -8,6 +8,7 @@ import PhysicalResultPage from "../pages/PhysicalResultPage.vue";
 import FoodResultPage from "../pages/FoodResultPage.vue";
 import MindResultPage from "../pages/MindResultPage.vue";
 import DailyTasks from "../components/DailyTasks.vue";
+import WeeklyTask from "../components/WeeklyTask.vue";
 
 const routes = [
   {
@@ -41,11 +42,11 @@ const routes = [
    {
     path: "/daily",
     component: DailyTasks,
-  }
-  //  {
-  //   path: "/weekly",
-  //   component: WeeklyTasks,
-  // },
+  },
+  {
+    path: "/weekly",
+    component: WeeklyTask,
+  },
 ];
 
 const router = createRouter({

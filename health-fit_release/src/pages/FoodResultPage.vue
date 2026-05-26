@@ -56,8 +56,14 @@
       </div>
     </q-card>
 
-     <div class="bottom-action">
-    <q-btn unelevated no-caps class="main-btn" label="Начать восстановление" @click="$router.push('/daily')"/>
+    <div class="bottom-action">
+      <q-btn
+        unelevated
+        no-caps
+        class="main-btn"
+        label="Начать восстановление"
+        @click="$router.push('/daily')"
+      />
     </div>
   </div>
 </template>
@@ -207,7 +213,6 @@
   font-weight: 700;
   background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
   color: var(--white);
-    box-shadow: 0 10px 30px rgba(67, 160, 71, 0.35);
+  box-shadow: 0 10px 30px rgba(67, 160, 71, 0.35);
 }
-
 </style>
