@@ -1,0 +1,17 @@
+#app {
+  --white: #fff;
+  --grey: #7b8190;
+  --grey2: #6b7280;
+  --orange: #fb8c00;
+  --black1: #1d1d1f;
+  --blue: #1e88e5;
+  --link: #646cff;
+  --link-hover: #747bff;
+  --hero-icon: rgba(255, 255, 255, 0.7);
+  --main-btn: linear-gradient(135deg, #ffb74d 0%, #fb8c00 100%);
+  --hero-icon-shadow: 0 10px 40px rgba(255, 152, 0, 0.2);
+  --food-result-btn: linear-gradient(180deg, #f4fff5 0%, #fcfffd 100%);
+  --start-btn: linear-gradient(135deg, #6bcb77 0%, #4caf50 100%);
+  --start-btn-shadow: 0 10px 30px rgba(76, 175, 80, 0.35);
+  --result-page-btn: linear-gradient(180deg, #fff6f1 0%, #fffdfb 100%);
+}
