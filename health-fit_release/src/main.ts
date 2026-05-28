@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import "./style.css";
 import "./colors.css";
-
+import i18n from "./locales";
 import App from "./App.vue";
 import { Quasar, Notify } from "quasar";
 import "quasar/src/css/index.sass";
@@ -20,4 +20,5 @@ createApp(App)
   })
   .use(router)
   .use(pinia)
+  .use(i18n)
   .mount("#app");
