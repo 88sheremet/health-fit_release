@@ -64,109 +64,94 @@
           no-caps
           class="start-btn"
           label="Начать скрининг"
-          @click="$router.push(routes.onboarding.questions)"
+          @click="startQuestions"
         />
 
-        <q-btn
-          flat
-          no-caps
-          class="skip-btn"
-          label="Пропустить"
-          @click="$router.push(routes.recovery.menu)"
-        />
+        <q-btn flat no-caps class="skip-btn" label="Пропустить" @click="skip" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
+import { useScreeningStore } from "../stores/screening";
 import { routes } from "../router/index";
+
+const router = useRouter();
+const store = useScreeningStore();
+
+const skip = () => {
+  store.completeScreening();
+  router.push(routes.recovery.menu);
+};
+
+const startQuestions = () => {
+  router.push(routes.onboarding.questions);
+};
 </script>
 
 <style scoped lang="scss">
 .screening-page {
   min-height: 100vh;
-
   padding: 24px;
-
   background: linear-gradient(180deg, #f5f9ff 0%, #eef7f2 100%);
 }
 
 .screening-container {
   max-width: 430px;
-
   margin: 0 auto;
-
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
 }
 
 .top-section {
   padding-top: 48px;
-
   text-align: center;
 }
 
 .hero-icon {
   position: relative;
-
   width: 120px;
   height: 120px;
-
   margin: 0 auto 28px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--hero-icon);
-
   backdrop-filter: blur(12px);
 }
 
 .glow {
   position: absolute;
-
   width: 90px;
   height: 90px;
-
   border-radius: 50%;
-
   background: rgba(76, 175, 80, 0.25);
-
   filter: blur(24px);
-
   animation: pulse 3s infinite;
 }
 
 .main-icon {
   position: relative;
   z-index: 2;
-
   font-size: 54px;
-
   color: #4caf50;
 }
 
 .title {
   font-size: 34px;
   font-weight: 700;
-
   line-height: 1.15;
-
- color: var(--black1);
-
+  color: var(--black1);
   margin-bottom: 16px;
 }
 
 .subtitle {
   font-size: 18px;
   line-height: 1.6;
-
   color: #5f6368;
 }
 
@@ -177,7 +162,7 @@ import { routes } from "../router/index";
 
   border-radius: 28px;
 
-   background: var(--hero-icon);
+  background: var(--hero-icon);
 
   backdrop-filter: blur(16px);
 
@@ -222,14 +207,14 @@ import { routes } from "../router/index";
 
 .orange {
   background: rgba(255, 152, 0, 0.12);
-  color: var( --orange);
+  color: var(--orange);
 }
 
 .info-title {
   font-size: 17px;
   font-weight: 600;
 
- color: var(--black1);
+  color: var(--black1);
 
   margin-bottom: 4px;
 }
@@ -238,7 +223,7 @@ import { routes } from "../router/index";
   font-size: 15px;
   line-height: 1.5;
 
-color: var(--grey2);
+  color: var(--grey2);
 }
 
 .bottom-section {

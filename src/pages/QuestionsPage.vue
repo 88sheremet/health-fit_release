@@ -162,6 +162,7 @@ const goNext = async () => {
     screeningStore.calculateCurrentBlockScore();
 
     screeningStore.completeScreening();
+    
 
     const result = screeningStore.dominantProblem;
 
