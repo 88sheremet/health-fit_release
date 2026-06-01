@@ -57,10 +57,14 @@
     </q-card>
 
     <div class="bottom-action">
-    <q-btn unelevated no-caps class="main-btn" label="Начать восстановление" @click="$router.push('/daily')"/>
+    <q-btn unelevated no-caps class="main-btn" label="Начать восстановление" @click="$router.push(routes.recovery.daily)"/>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { routes } from "../router/index";
+</script>
 
 <style scoped lang="scss">
 .result-page {

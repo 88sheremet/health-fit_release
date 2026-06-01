@@ -47,6 +47,7 @@
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";
 import { useScreeningStore } from "../stores/screening";
+import { routes } from "../router/index";
 
 const $q = useQuasar();
 
@@ -75,15 +76,15 @@ const openTab = (tab: string) => {
   }
 
   if (tab === "daily") {
-    router.push("/daily");
+    router.push(routes.recovery.daily);
   }
 
   if (tab === "weekly") {
-    router.push("/weekly");
+    router.push(routes.recovery.weekly);
   }
 
   if (tab === "journal") {
-    router.push("/journal");
+    router.push(routes.recovery.journal);
   }
 };
 </script>
@@ -123,7 +124,7 @@ const openTab = (tab: string) => {
   font-size: 32px;
   font-weight: 700;
 
- color: var(--black1);
+  color: var(--black1);
 
   margin-bottom: 12px;
 }
@@ -175,7 +176,7 @@ const openTab = (tab: string) => {
   font-size: 20px;
   font-weight: 600;
 
- color: var(--black1);
+  color: var(--black1);
 
   margin-bottom: 8px;
 }
@@ -185,6 +186,6 @@ const openTab = (tab: string) => {
 
   line-height: 1.5;
 
-color: var(--grey2);
+  color: var(--grey2);
 }
 </style>

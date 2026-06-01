@@ -64,7 +64,7 @@
           no-caps
           class="start-btn"
           label="Начать скрининг"
-          @click="$router.push('/questions')"
+          @click="$router.push(routes.onboarding.questions)"
         />
 
         <q-btn
@@ -72,7 +72,7 @@
           no-caps
           class="skip-btn"
           label="Пропустить"
-          @click="$router.push('/menu')"
+          @click="$router.push(routes.recovery.menu)"
         />
       </div>
     </div>
@@ -80,6 +80,7 @@
 </template>
 
 <script setup lang="ts">
+import { routes } from "../router/index";
 </script>
 
 <style scoped lang="scss">
