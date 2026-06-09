@@ -9,7 +9,9 @@ import FoodResultPage from "../pages/FoodResultPage.vue";
 import MindResultPage from "../pages/MindResultPage.vue";
 import { useScreeningStore } from "../stores/screening";
 import DailyTasks from "../components/DailyTasks.vue";
+import NotFoundPage from "../pages/NotFoundPage.vue";
 import WeeklyTask from "../components/WeeklyTask.vue";
+
 
 export const routes = {
   onboarding: {
@@ -77,7 +79,7 @@ const router = createRouter({
     },
     {
       path: "/:pathMatch(.*)*",
-      redirect: routes.onboarding.welcome,
+      component: NotFoundPage,
     },
   ],
 });

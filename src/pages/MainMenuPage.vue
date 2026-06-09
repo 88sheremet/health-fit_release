@@ -11,7 +11,7 @@
         no-caps
         class="test-btn"
         label="Пройти анализ состояния"
-        @click="router.push('/questions')"
+        @click="router.push(routes.onboarding.questions)"
       />
     </div>
 
