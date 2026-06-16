@@ -7,8 +7,11 @@ import physical from "../mocks/dailyTasks/dailyPhysicalTasks.json";
 
 interface Task {
   id: string;
+  type: "food" | "mental" | "physical";
   title: string;
   reward: number;
+  whatDoing: any;
+  whyDoing: string;
 }
 
 interface TaskState {
@@ -41,26 +44,40 @@ export const useTaskStore = defineStore("tasks", {
 
       const index = (this.dayIndex - 1) % 30;
 
-      const f = food.dailyFoodTasks[index % food.dailyFoodTasks.length];
-      const m = mental.dailyMentalTasks[index % mental.dailyMentalTasks.length];
-      const p =
+      const foodTask = food.dailyFoodTasks[index % food.dailyFoodTasks.length];
+
+      const mentalTask =
+        mental.dailyMentalTasks[index % mental.dailyMentalTasks.length];
+
+      const physicalTask =
         physical.dailyPhysicalTasks[index % physical.dailyPhysicalTasks.length];
 
       return [
         {
           id: `food-${index}`,
-          title: f.nameProgram,
+          type: "food",
+          title: foodTask.nameProgram,
           reward: 10,
+          whatDoing: foodTask.whatDoing,
+          whyDoing: foodTask.whyDoing,
         },
+
         {
           id: `mental-${index}`,
-          title: m.nameProgram,
+          type: "mental",
+          title: mentalTask.nameProgram,
           reward: 10,
+          whatDoing: mentalTask.whatDoing,
+          whyDoing: mentalTask.whyDoing,
         },
+
         {
           id: `physical-${index}`,
-          title: p.nameProgram,
+          type: "physical",
+          title: physicalTask.nameProgram,
           reward: 15,
+          whatDoing: physicalTask.whatDoing,
+          whyDoing: physicalTask.whyDoing,
         },
       ];
     },

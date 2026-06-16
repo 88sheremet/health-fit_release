@@ -1,15 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-
     <q-page-container>
       <q-page class="page">
-
         <div class="header">
           <div>
             <div class="title">Привет 👋</div>
-            <div class="subtitle">
-              День {{ store.dayIndex }}
-            </div>
+            <div class="subtitle">День {{ store.dayIndex }}</div>
           </div>
 
           <q-avatar color="primary" text-color="white">
@@ -36,27 +32,34 @@
         <div v-if="store.isRestDay" class="rest-card">
           <div class="emoji">🌿</div>
           <div class="rest-title">Сегодня полный отдых</div>
-          <div class="rest-text">
-            Восстановление — это тоже прогресс
-          </div>
+          <div class="rest-text">Восстановление — это тоже прогресс</div>
         </div>
 
         <div v-else class="tasks">
-
           <q-card
             v-for="task in tasks"
             :key="task.id"
             class="task-card"
-            :class="{ done: store.isDone(task.id) }"
+            clickable
+            @click="openTask(task)"
           >
-            <div class="task-title">
-              {{ task.title }}
-            </div>
-
-            <div class="task-footer">
-              <div class="reward">
-                +{{ task.reward }} ресурса
+            <div class="task-header">
+              <div class="task-title">
+                {{ task.title }}
               </div>
+              <q-btn
+                class="icon-popup"
+                flat
+                round
+                dense
+                padding="0"
+                @click.stop="openTask(task)"
+              >
+                <img :src="click" class="click-icon" />
+              </q-btn>
+            </div>
+            <div class="task-footer">
+              <div class="reward">+{{ task.reward }} ресурса</div>
 
               <q-btn
                 unelevated
@@ -65,32 +68,39 @@
                 :label="store.isDone(task.id) ? 'Готово' : 'Выполнить'"
                 :disable="store.isDone(task.id)"
                 @click="store.completeTask(task)"
+                @click.stop="store.completeTask(task)"
               />
             </div>
           </q-card>
-
         </div>
-
       </q-page>
     </q-page-container>
-
+    <TaskDetailsDialog v-model="showDialog" :task="selectedTask" />
     <BottomNavigation />
-
   </q-layout>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import BottomNavigation from "../components/BottomNavigation.vue";
 import { useTaskStore } from "../stores/dailyTasks";
+import TaskDetailsDialog from "../components/TaskDetailsDialog.vue";
+
+import click from "../assets/click.png";
 
 const store = useTaskStore();
+const tasks = computed(() => store.todayTasks);
+const selectedTask = ref(null);
+const showDialog = ref(false);
+
+function openTask(task) {
+  selectedTask.value = task;
+  showDialog.value = true;
+}
 
 onMounted(() => {
   store.init();
 });
-
-const tasks = computed(() => store.todayTasks);
 </script>
 
 <style scoped>
@@ -149,6 +159,7 @@ const tasks = computed(() => store.todayTasks);
 .task-title {
   font-weight: 600;
   margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 .task-footer {
@@ -182,5 +193,18 @@ const tasks = computed(() => store.todayTasks);
 
 .rest-text {
   color: #777;
+}
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.click-icon {
+  width: 28px;
+  height: 30px;
+  object-fit: contain;
+}
+.icon-popup {
+  margin-bottom: 10px;
 }
 </style>
