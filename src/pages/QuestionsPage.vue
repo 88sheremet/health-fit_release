@@ -91,6 +91,7 @@ import { computed, ref, nextTick } from "vue";
 import { useScreeningStore } from "../stores/screening";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+import { routes } from "../router/index";
 
 const screeningStore = useScreeningStore();
 const router = useRouter();
@@ -161,15 +162,16 @@ const goNext = async () => {
     screeningStore.calculateCurrentBlockScore();
 
     screeningStore.completeScreening();
+    
 
     const result = screeningStore.dominantProblem;
 
     if (result === "physical") {
-      router.push("/physical-result");
+      router.push(routes.results.physical);
     } else if (result === "food") {
-      router.push("/food-result");
+      router.push(routes.results.food);
     } else {
-      router.push("/mind-result");
+      router.push(routes.results.mind);
     }
 
     return;

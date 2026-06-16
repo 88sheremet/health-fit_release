@@ -1,170 +1,186 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+
     <q-page-container>
-      <q-page class="bg-grey-1">
-        <div class="q-pa-md">
-          <div class="row items-center justify-between">
+      <q-page class="page">
+
+        <div class="header">
+          <div>
+            <div class="title">Привет 👋</div>
+            <div class="subtitle">
+              День {{ store.dayIndex }}
+            </div>
+          </div>
+
+          <q-avatar color="primary" text-color="white">
+            {{ store.streak }}
+          </q-avatar>
+        </div>
+
+        <q-card class="energy-card">
+          <div class="row justify-between items-center">
             <div>
-              <div class="text-h6">Привет 👋</div>
-              <div class="text-caption text-grey">
-                День {{ day }} • серия {{ streak }} 🔥
-              </div>
+              <div class="label">Энергия</div>
+              <div class="value">{{ store.energy }} ⚡</div>
             </div>
 
-            <q-avatar color="primary" text-color="white">
-              {{ streak }}
-            </q-avatar>
-          </div>
-
-          <q-card class="q-mt-md q-pa-md bg-primary text-white">
-            <div class="row items-center justify-between">
-              <div>
-                <div class="text-subtitle2">Энергия</div>
-                <div class="text-h5">{{ energy }} ⚡</div>
-              </div>
-
-              <q-circular-progress
-                :value="energy"
-                :max="maxEnergy"
-                size="60px"
-                color="yellow"
-                track-color="white"
-                show-value
-              />
-            </div>
-          </q-card>
-
-          <q-card class="q-mt-md q-pa-md">
-            <div class="text-subtitle2">Цель дня</div>
-            <div class="text-h6">
-              {{ completedTasks }}/{{ tasks.length }} выполнено
-            </div>
-
-            <q-linear-progress
-              class="q-mt-sm"
-              :value="progress"
-              color="positive"
-            />
-          </q-card>
-        </div>
-
-        <div class="q-px-md row q-col-gutter-sm q-mb-md">
-          <div class="col-4">
-            <q-btn
-              unelevated
-              color="primary"
-              class="full-width"
-              label="💧 Вода"
-              @click="quickAdd(3)"
+            <q-circular-progress
+              :value="store.energy"
+              :max="100"
+              size="60px"
+              color="green"
             />
           </div>
-          <div class="col-4">
-            <q-btn
-              unelevated
-              color="secondary"
-              class="full-width"
-              label="🧘 Разминка"
-              @click="quickAdd(5)"
-            />
-          </div>
-          <div class="col-4">
-            <q-btn
-              unelevated
-              color="accent"
-              class="full-width"
-              label="🚶 Шаги"
-              @click="quickAdd(4)"
-            />
+        </q-card>
+
+        <div v-if="store.isRestDay" class="rest-card">
+          <div class="emoji">🌿</div>
+          <div class="rest-title">Сегодня полный отдых</div>
+          <div class="rest-text">
+            Восстановление — это тоже прогресс
           </div>
         </div>
 
-        <div class="q-px-md">
+        <div v-else class="tasks">
+
           <q-card
             v-for="task in tasks"
             :key="task.id"
-            class="q-mb-md"
-            :class="{ 'bg-green-1': task.done }"
+            class="task-card"
+            :class="{ done: store.isDone(task.id) }"
           >
-            <q-card-section>
-              <div class="row items-center justify-between">
-                <div>
-                  <div class="text-subtitle1">
-                    {{ task.title }}
-                  </div>
-                  <div class="text-caption text-grey">
-                    +{{ task.reward }} энергии
-                  </div>
-                </div>
+            <div class="task-title">
+              {{ task.title }}
+            </div>
 
-                <q-badge v-if="task.done" color="positive" label="Готово" />
+            <div class="task-footer">
+              <div class="reward">
+                +{{ task.reward }} ресурса
               </div>
-            </q-card-section>
-
-            <q-separator />
-
-            <q-card-actions align="between">
-              <q-btn
-                flat
-                color="primary"
-                label="Начать"
-                @click="startTask(task)"
-              />
 
               <q-btn
                 unelevated
-                color="positive"
-                :label="task.done ? 'Сделано' : 'Выполнено'"
-                :disable="task.done"
-                @click="completeTask(task)"
+                dense
+                color="green"
+                :label="store.isDone(task.id) ? 'Готово' : 'Выполнить'"
+                :disable="store.isDone(task.id)"
+                @click="store.completeTask(task)"
               />
-            </q-card-actions>
+            </div>
           </q-card>
+
         </div>
+
       </q-page>
     </q-page-container>
 
     <BottomNavigation />
-  </q-layout>
 
-  
+  </q-layout>
 </template>
 
-<script setup>
-import { ref, computed } from "vue";
+<script setup lang="ts">
+import { computed, onMounted } from "vue";
 import BottomNavigation from "../components/BottomNavigation.vue";
-const day = ref(1);
-const streak = ref(3);
+import { useTaskStore } from "../stores/dailyTasks";
 
-const energy = ref(40);
-const maxEnergy = 100;
+const store = useTaskStore();
 
-const tasks = ref([
-  { id: 1, title: "Почистить зубы", reward: 5, done: false },
-  { id: 2, title: "Сделать разминку", reward: 10, done: false },
-  { id: 3, title: "Выпить воду", reward: 5, done: false },
-]);
+onMounted(() => {
+  store.init();
+});
 
-const completedTasks = computed(() => tasks.value.filter((t) => t.done).length);
-
-const progress = computed(() =>
-  tasks.value.length ? completedTasks.value / tasks.value.length : 0
-);
-
-function startTask(task) {
-  console.log("start:", task.title);
-}
-
-function completeTask(task) {
-  if (task.done) return;
-
-  task.done = true;
-  energy.value = Math.min(maxEnergy, energy.value + task.reward);
-}
-
-function quickAdd(value) {
-  energy.value = Math.min(maxEnergy, energy.value + value);
-}
+const tasks = computed(() => store.todayTasks);
 </script>
 
 <style scoped>
+.page {
+  padding: 20px;
+  background: linear-gradient(180deg, #f5f9ff, #eef7f2);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #777;
+}
+
+.energy-card {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background: white;
+}
+
+.value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tasks {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-card {
+  padding: 16px;
+  border-radius: 18px;
+  background: white;
+  transition: 0.2s;
+}
+
+.task-card.done {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.task-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reward {
+  font-size: 13px;
+  color: #4caf50;
+}
+
+.rest-card {
+  margin-top: 30px;
+  text-align: center;
+  padding: 30px;
+  border-radius: 24px;
+  background: white;
+}
+
+.emoji {
+  font-size: 40px;
+}
+
+.rest-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.rest-text {
+  color: #777;
+}
 </style>

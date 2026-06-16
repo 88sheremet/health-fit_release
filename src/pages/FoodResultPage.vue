@@ -62,11 +62,15 @@
         no-caps
         class="main-btn"
         label="Начать восстановление"
-        @click="$router.push('/daily')"
+        @click="$router.push(routes.recovery.daily)"
       />
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { routes } from "../router/index";
+</script>
 
 <style scoped lang="scss">
 .result-page {
