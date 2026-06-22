@@ -22,7 +22,7 @@
 
             <q-circular-progress
               :value="store.energy"
-              :max="100"
+              :max="1000"
               size="60px"
               color="green"
             />

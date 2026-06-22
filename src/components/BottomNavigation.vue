@@ -3,7 +3,7 @@
     <div
       class="nav-item"
       :class="{ active: route.path === '/daily' }"
-      @click="router.push('routes.recovery.daily')"
+      @click="router.push(routes.recovery.daily)"
     >
       <q-icon name="task_alt" />
 
@@ -13,7 +13,7 @@
     <div
       class="nav-item"
       :class="{ active: route.path === '/weekly' }"
-      @click="router.push('routes.recovery.weekly')"
+      @click="router.push(routes.recovery.weekly)"
     >
       <q-icon name="event_note" />
 
@@ -23,7 +23,7 @@
     <div
       class="nav-item"
       :class="{ active: route.path === '/journal' }"
-      @click="$router.push(routes.onboarding.journal)"
+      @click="router.push(routes.recovery.journal)"
     >
       <q-icon name="menu_book" />
 
