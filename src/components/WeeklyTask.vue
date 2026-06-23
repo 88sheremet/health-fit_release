@@ -4,7 +4,6 @@
       <q-page class="page">
         <div class="header">
           <div class="title">Еженедельное задание</div>
-
           <div class="subtitle">Неделя {{ store.currentWeek }}</div>
         </div>
 
@@ -17,7 +16,6 @@
 
           <div class="section">
             <div class="section-title">Что делать</div>
-
             <div class="text">
               {{ store.currentTask.whatDoing }}
             </div>
@@ -25,7 +23,6 @@
 
           <div class="section">
             <div class="section-title">Зачем это нужно</div>
-
             <div class="text">
               {{ store.currentTask.whyDoing }}
             </div>
@@ -37,7 +34,8 @@
             color="green"
             class="complete-btn"
             label="Выполнил задание"
-            @click="store.completeCurrentTask()"
+            :disable="!store.canComplete"
+            @click="completeWeeklyTask"
           />
 
           <q-banner v-else rounded class="success-banner">
@@ -56,6 +54,13 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 import { useWeeklyTaskStore } from "../stores/weeklyTasks";
 
 const store = useWeeklyTaskStore();
+
+function completeWeeklyTask() {
+  if (!store.canComplete) return;
+
+  store.completeCurrentTask();
+  store.rewardEnergy();
+}
 </script>
 
 <style scoped>
@@ -104,7 +109,6 @@ const store = useWeeklyTaskStore();
 .task-title {
   font-size: 24px;
   font-weight: 700;
-
   margin-bottom: 24px;
 }
 
@@ -115,7 +119,6 @@ const store = useWeeklyTaskStore();
 .section-title {
   font-size: 18px;
   font-weight: 700;
-
   margin-bottom: 10px;
 }
 

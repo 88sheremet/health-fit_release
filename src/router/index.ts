@@ -1,17 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import WelcomePage from "../pages/WelcomePage.vue";
 import ScreeningPage from "../pages/ScreeningPage.vue";
 import QuestionsPage from "../pages/QuestionsPage.vue";
 import MainMenuPage from "../pages/MainMenuPage.vue";
-import { getStartRoute } from "./getStartRoute";
+
 import PhysicalResultPage from "../pages/PhysicalResultPage.vue";
 import FoodResultPage from "../pages/FoodResultPage.vue";
 import MindResultPage from "../pages/MindResultPage.vue";
-import { useScreeningStore } from "../stores/screening";
+
 import DailyTasks from "../components/DailyTasks.vue";
-import NotFoundPage from "../pages/NotFoundPage.vue";
 import WeeklyTask from "../components/WeeklyTask.vue";
 
+import NotFoundPage from "../pages/NotFoundPage.vue";
+
+import { getStartRoute } from "./getStartRoute";
+import { useScreeningStore } from "../stores/screening";
 
 export const routes = {
   onboarding: {
@@ -77,6 +81,7 @@ const router = createRouter({
       path: routes.recovery.weekly,
       component: WeeklyTask,
     },
+
     {
       path: "/:pathMatch(.*)*",
       component: NotFoundPage,
@@ -100,15 +105,15 @@ router.beforeEach((to, from, next) => {
     return next(routes.onboarding.welcome);
   }
 
+  if (to.path === "/") {
+    const startRoute = getStartRoute(store);
+
+    if (startRoute && startRoute !== "/") {
+      return next(startRoute);
+    }
+  }
+
   next();
-});
-
-router.isReady().then(() => {
-  const store = useScreeningStore();
-
-  const startRoute = getStartRoute(store);
-
-  router.replace(startRoute);
 });
 
 export default router;
