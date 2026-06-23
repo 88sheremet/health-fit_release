@@ -91,7 +91,7 @@ const opened = computed({
   position: absolute;
   top: 12px;
   right: 12px;
-  background: white;
+  background: var(--white);
   z-index: 2;
 }
 
@@ -127,13 +127,13 @@ const opened = computed({
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #4caf50;
+  color: var(--green);
 }
 
 .text {
   font-size: 15px;
   line-height: 1.7;
-  color: #555;
+  color: var(--grey-dark);
 }
 
 .separator {

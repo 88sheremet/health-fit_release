@@ -67,7 +67,7 @@ function completeWeeklyTask() {
 .page {
   padding: 20px;
   padding-bottom: 60px;
-  background: linear-gradient(180deg, #f5f9ff, #eef7f2);
+  background: var(--bg-gradient-main);
   min-height: 100vh;
 }
 
@@ -81,7 +81,7 @@ function completeWeeklyTask() {
 }
 
 .subtitle {
-  color: #777;
+  color: var(--grey);
   margin-top: 4px;
 }
 
@@ -95,8 +95,8 @@ function completeWeeklyTask() {
   align-items: center;
   gap: 6px;
 
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: var(--green-bg);
+  color: var(--green-deep);
 
   padding: 8px 14px;
   border-radius: 999px;
@@ -124,7 +124,7 @@ function completeWeeklyTask() {
 
 .text {
   line-height: 1.7;
-  color: #555;
+  color: var(--grey-dark);
   white-space: pre-line;
 }
 
@@ -135,7 +135,7 @@ function completeWeeklyTask() {
 }
 
 .success-banner {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: var(--green-bg);
+  color: var(--green-deep);
 }
 </style>

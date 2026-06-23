@@ -106,7 +106,7 @@ onMounted(() => {
 <style scoped>
 .page {
   padding: 20px;
-  background: linear-gradient(180deg, #f5f9ff, #eef7f2);
+  background: var(--bg-gradient-main);
   width: 100%;
 }
 
@@ -122,14 +122,14 @@ onMounted(() => {
 }
 
 .subtitle {
-  color: #777;
+  color: var(--grey);
 }
 
 .energy-card {
   margin-top: 20px;
   padding: 20px;
   border-radius: 20px;
-  background: white;
+  background: var(--white);
 }
 
 .value {
@@ -147,7 +147,7 @@ onMounted(() => {
 .task-card {
   padding: 16px;
   border-radius: 18px;
-  background: white;
+  background: var(--white);
   transition: 0.2s;
 }
 
@@ -170,7 +170,7 @@ onMounted(() => {
 
 .reward {
   font-size: 13px;
-  color: #4caf50;
+  color: var(--green);
 }
 
 .rest-card {
@@ -178,7 +178,7 @@ onMounted(() => {
   text-align: center;
   padding: 30px;
   border-radius: 24px;
-  background: white;
+  background: var(--white);
 }
 
 .emoji {
@@ -192,7 +192,7 @@ onMounted(() => {
 }
 
 .rest-text {
-  color: #777;
+  color: var(--grey);
 }
 .task-header {
   display: flex;

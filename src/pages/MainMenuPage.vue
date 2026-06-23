@@ -95,7 +95,7 @@ const openTab = (tab: string) => {
 
   padding: 24px;
 
-  background: linear-gradient(180deg, #f5f9ff 0%, #eef7f2 100%);
+  background: var(--bg-gradient-main);
 }
 
 .header {
@@ -114,11 +114,11 @@ const openTab = (tab: string) => {
   font-size: 16px;
   font-weight: 700;
 
-  background: linear-gradient(135deg, #6bcb77 0%, #4caf50 100%);
+  background: var(--start-btn);
 
-  color: white;
+  color: var(--white);
 
-  box-shadow: 0 10px 24px rgba(76, 175, 80, 0.28);
+  box-shadow: 0 10px 24px var(--start-btn-shadow);
 }
 .title {
   font-size: 32px;
@@ -153,7 +153,7 @@ const openTab = (tab: string) => {
 
   backdrop-filter: blur(12px);
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px var(--shadow-md);
 
   cursor: pointer;
 
@@ -167,7 +167,7 @@ const openTab = (tab: string) => {
 .tab-icon {
   font-size: 34px;
 
-  color: #4caf50;
+  color: var(--green);
 
   margin-bottom: 14px;
 }

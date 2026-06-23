@@ -59,9 +59,9 @@ const route = useRoute();
   justify-content: space-between;
   align-items: stretch;
 
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--glass-heavy);
   border: 1px solid rgba(34, 197, 94, 0.1);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px var(--shadow-sm);
   backdrop-filter: blur(24px);
 
   border: 1px solid var(--hero-icon);
@@ -84,7 +84,7 @@ const route = useRoute();
 
   border-radius: 20px;
 
-  color: #9ca3af;
+  color: var(--grey-light);
 
   transition: all 0.25s ease;
 
@@ -112,7 +112,7 @@ const route = useRoute();
 }
 
 .nav-item.active {
-  color: #22c55e;
+  color: var(--green-bright);
   background: rgba(34, 197, 94, 0.1);
   border-color: rgba(34, 197, 94, 0.25);
 

@@ -72,7 +72,7 @@ import { routes } from "../router/index";
 
   padding: 24px 20px 140px;
 
-  background: linear-gradient(180deg, #f7f5ff 0%, #fcfbff 100%);
+  background: var(--bg-gradient-purple);
 }
 
 .hero {
@@ -133,7 +133,7 @@ import { routes } from "../router/index";
 
   backdrop-filter: blur(16px);
 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 35px var(--shadow-md);
 }
 
 .card-title {
@@ -141,7 +141,7 @@ import { routes } from "../router/index";
 
   font-weight: 700;
 
-  color: #673ab7;
+  color: var(--purple);
 
   margin-bottom: 14px;
 }
@@ -159,7 +159,7 @@ import { routes } from "../router/index";
 .divider {
   height: 1px;
 
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--shadow-lg);
 
   margin: 20px 0;
 }
@@ -175,7 +175,7 @@ import { routes } from "../router/index";
 
   line-height: 1.5;
 
-  color: #374151;
+  color: var(--grey-dark);
 }
 
 .info-title {
@@ -202,13 +202,13 @@ color: var(--grey2);
 
   padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
 
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--glass-bar);
 
   backdrop-filter: blur(18px);
 
   -webkit-backdrop-filter: blur(18px);
 
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid var(--glass-border);
 
   z-index: 100;
 }
@@ -224,7 +224,7 @@ color: var(--grey2);
 
   font-weight: 700;
 
-  background: linear-gradient(135deg, #7e57c2 0%, #5e35b1 100%);
+  background: var(--gradient-purple);
 
   color: var(--white);
 

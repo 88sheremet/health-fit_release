@@ -124,7 +124,7 @@ color: var(--grey2);
 
   backdrop-filter: blur(16px);
 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 35px var(--shadow-md);
 }
 
 .card-title {
@@ -150,7 +150,7 @@ color: var(--grey2);
 .divider {
   height: 1px;
 
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--shadow-lg);
 
   margin: 20px 0;
 }
@@ -166,7 +166,7 @@ color: var(--grey2);
 
   line-height: 1.5;
 
-  color: #374151;
+  color: var(--grey-dark);
 }
 
 .info-title {
@@ -190,10 +190,10 @@ color: var(--grey2);
   right: 0;
   bottom: 0;
   padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--glass-bar);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid var(--glass-border);
   z-index: 100;
 }
 

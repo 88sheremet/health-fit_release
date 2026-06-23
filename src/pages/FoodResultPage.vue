@@ -110,7 +110,7 @@ import { routes } from "../router/index";
 
   line-height: 1.15;
 
-  color: var(black1);
+  color: var(--black1);
 
   margin-bottom: 16px;
 }
@@ -136,7 +136,7 @@ import { routes } from "../router/index";
 
   backdrop-filter: blur(16px);
 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 35px var(--shadow-md);
 }
 
 .card-title {
@@ -162,7 +162,7 @@ import { routes } from "../router/index";
 .divider {
   height: 1px;
 
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--shadow-lg);
 
   margin: 20px 0;
 }
@@ -178,7 +178,7 @@ import { routes } from "../router/index";
 
   line-height: 1.5;
 
-  color: #374151;
+  color: var(--grey-dark);
 }
 
 .info-title {
@@ -202,10 +202,10 @@ import { routes } from "../router/index";
   right: 0;
   bottom: 0;
   padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--glass-bar);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid var(--glass-border);
   z-index: 100;
 }
 
@@ -215,7 +215,7 @@ import { routes } from "../router/index";
   border-radius: 22px;
   font-size: 18px;
   font-weight: 700;
-  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+  background: var(--gradient-food);
   color: var(--white);
   box-shadow: 0 10px 30px rgba(67, 160, 71, 0.35);
 }

@@ -57,7 +57,7 @@ import { routes } from "../router/index";
 .welcome-page {
   min-height: 100vh;
 
-  background: linear-gradient(180deg, #f5f9ff 0%, #eef7f2 100%);
+  background: var(--bg-gradient-main);
 
   padding: 24px;
 }
@@ -108,7 +108,7 @@ import { routes } from "../router/index";
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: rgba(255, 215, 0, 0.25);
+  background: var(--glow-gold);
   filter: blur(22px);
   animation: pulse 3s infinite;
 }
@@ -124,7 +124,7 @@ import { routes } from "../router/index";
 .subtitle {
   font-size: 18px;
   line-height: 1.6;
-  color: #5f6368;
+  color: var(--grey2);
   margin: 0;
 }
 
@@ -139,7 +139,7 @@ import { routes } from "../router/index";
 
   backdrop-filter: blur(14px);
 
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 40px var(--shadow-lg);
 }
 
 .benefit-item {
@@ -163,7 +163,7 @@ import { routes } from "../router/index";
   align-items: center;
   justify-content: center;
 
-  background: #f4f7fb;
+  background: var(--grey-icon-bg);
 
   font-size: 20px;
 

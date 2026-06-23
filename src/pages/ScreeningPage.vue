@@ -95,7 +95,7 @@ const startQuestions = () => {
 .screening-page {
   min-height: 100vh;
   padding: 24px;
-  background: linear-gradient(180deg, #f5f9ff 0%, #eef7f2 100%);
+  background: var(--bg-gradient-main);
 }
 
 .screening-container {
@@ -129,7 +129,7 @@ const startQuestions = () => {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: rgba(76, 175, 80, 0.25);
+  background: var(--glow-green);
   filter: blur(24px);
   animation: pulse 3s infinite;
 }
@@ -138,7 +138,7 @@ const startQuestions = () => {
   position: relative;
   z-index: 2;
   font-size: 54px;
-  color: #4caf50;
+  color: var(--green);
 }
 
 .title {
@@ -152,7 +152,7 @@ const startQuestions = () => {
 .subtitle {
   font-size: 18px;
   line-height: 1.6;
-  color: #5f6368;
+  color: var(--grey2);
 }
 
 .info-card {
@@ -166,7 +166,7 @@ const startQuestions = () => {
 
   backdrop-filter: blur(16px);
 
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 40px var(--shadow-lg);
 }
 
 .info-item {
@@ -196,17 +196,17 @@ const startQuestions = () => {
 }
 
 .green {
-  background: rgba(76, 175, 80, 0.12);
+  background: var(--icon-green-bg);
   color: var(--green);
 }
 
 .blue {
-  background: rgba(33, 150, 243, 0.12);
+  background: var(--icon-blue-bg);
   color: var(--blue);
 }
 
 .orange {
-  background: rgba(255, 152, 0, 0.12);
+  background: var(--icon-orange-bg);
   color: var(--orange);
 }
 
@@ -239,7 +239,7 @@ const startQuestions = () => {
   font-size: 15px;
   line-height: 1.5;
 
-  color: var(grey);
+  color: var(--grey);
 
   margin-bottom: 22px;
 }
@@ -253,11 +253,11 @@ const startQuestions = () => {
   font-size: 18px;
   font-weight: 700;
 
-  background: linear-gradient(135deg, #6bcb77 0%, #4caf50 100%);
+  background: var(--start-btn);
 
-  color: white;
+  color: var(--white);
 
-  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.35);
+  box-shadow: var(--start-btn-shadow);
 }
 
 @keyframes pulse {
