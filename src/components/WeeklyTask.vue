@@ -2,31 +2,21 @@
   <q-layout view="lHh Lpr lFf">
     <q-page-container>
       <q-page class="page">
-
         <div class="header">
-          <div class="title">
-            Еженедельное задание
-          </div>
+          <div class="title">Еженедельное задание</div>
 
-          <div class="subtitle">
-            Неделя {{ store.currentWeek }}
-          </div>
+          <div class="subtitle">Неделя {{ store.currentWeek }}</div>
         </div>
 
         <q-card class="task-card">
-
-          <div class="badge">
-            🎯 Задание недели
-          </div>
+          <div class="badge">🎯 Задание недели</div>
 
           <div class="task-title">
             {{ store.currentTask.nameProgram }}
           </div>
 
           <div class="section">
-            <div class="section-title">
-              Что делать
-            </div>
+            <div class="section-title">Что делать</div>
 
             <div class="text">
               {{ store.currentTask.whatDoing }}
@@ -34,9 +24,7 @@
           </div>
 
           <div class="section">
-            <div class="section-title">
-              Зачем это нужно
-            </div>
+            <div class="section-title">Зачем это нужно</div>
 
             <div class="text">
               {{ store.currentTask.whyDoing }}
@@ -52,16 +40,10 @@
             @click="store.completeCurrentTask()"
           />
 
-          <q-banner
-            v-else
-            rounded
-            class="success-banner"
-          >
+          <q-banner v-else rounded class="success-banner">
             ✅ Задание недели выполнено
           </q-banner>
-
         </q-card>
-
       </q-page>
     </q-page-container>
 
@@ -79,6 +61,7 @@ const store = useWeeklyTaskStore();
 <style scoped>
 .page {
   padding: 20px;
+  padding-bottom: 60px;
   background: linear-gradient(180deg, #f5f9ff, #eef7f2);
   min-height: 100vh;
 }

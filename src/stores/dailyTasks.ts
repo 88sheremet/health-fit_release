@@ -13,12 +13,12 @@ interface Task {
   whatDoing: any;
   whyDoing: string;
 }
-
 interface TaskState {
   startDate: string;
   completed: Record<string, boolean>;
   energy: number;
   streak: number;
+  lastVisitDate: string;
 }
 
 export const useTaskStore = defineStore("tasks", {
@@ -26,7 +26,8 @@ export const useTaskStore = defineStore("tasks", {
     startDate: "",
     completed: {},
     energy: 40,
-    streak: 0,
+    streak: 1,
+    lastVisitDate: "",
   }),
 
   getters: {
@@ -89,9 +90,32 @@ export const useTaskStore = defineStore("tasks", {
 
   actions: {
     init() {
+      const today = new Date().toDateString();
+
       if (!this.startDate) {
         this.startDate = new Date().toISOString();
       }
+
+      if (!this.lastVisitDate) {
+        this.lastVisitDate = today;
+        this.streak = 1;
+        return;
+      }
+
+      const lastVisit = new Date(this.lastVisitDate);
+      const currentDate = new Date(today);
+
+      const diffDays = Math.floor(
+        (currentDate.getTime() - lastVisit.getTime()) / (1000 * 60 * 60 * 24),
+      );
+
+      if (diffDays === 1) {
+        this.streak += 1;
+      } else if (diffDays > 1) {
+        this.streak = 1;
+      }
+
+      this.lastVisitDate = today;
     },
 
     completeTask(task: Task) {
