@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import "./style.css";
+import "./fonts.css";
 import "./colors.css";
 import i18n from "./locales";
 import App from "./App.vue";

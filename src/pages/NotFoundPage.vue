@@ -34,7 +34,7 @@ const router = useRouter();
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: linear-gradient(180deg, #f5f9ff 0%, #eef7f2 100%);
+  background: var(--bg-gradient-main);
 }
 
 .content {
@@ -46,7 +46,7 @@ const router = useRouter();
   font-size: 96px;
   font-weight: 800;
   line-height: 1;
-  color: #4caf50;
+  color: var(--green);
   margin-bottom: 16px;
 }
 
@@ -70,7 +70,7 @@ const router = useRouter();
   border-radius: 18px;
   font-size: 16px;
   font-weight: 700;
-  background: linear-gradient(135deg, #6bcb77 0%, #4caf50 100%);
+  background: var(--start-btn);
   color: var(--white);
 }
 </style>

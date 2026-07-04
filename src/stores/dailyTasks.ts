@@ -7,15 +7,18 @@ import physical from "../mocks/dailyTasks/dailyPhysicalTasks.json";
 
 interface Task {
   id: string;
+  type: "food" | "mental" | "physical";
   title: string;
   reward: number;
+  whatDoing: any;
+  whyDoing: string;
 }
-
 interface TaskState {
   startDate: string;
   completed: Record<string, boolean>;
   energy: number;
   streak: number;
+  lastVisitDate: string;
 }
 
 export const useTaskStore = defineStore("tasks", {
@@ -23,7 +26,8 @@ export const useTaskStore = defineStore("tasks", {
     startDate: "",
     completed: {},
     energy: 40,
-    streak: 0,
+    streak: 1,
+    lastVisitDate: "",
   }),
 
   getters: {
@@ -41,26 +45,40 @@ export const useTaskStore = defineStore("tasks", {
 
       const index = (this.dayIndex - 1) % 30;
 
-      const f = food.dailyFoodTasks[index % food.dailyFoodTasks.length];
-      const m = mental.dailyMentalTasks[index % mental.dailyMentalTasks.length];
-      const p =
+      const foodTask = food.dailyFoodTasks[index % food.dailyFoodTasks.length];
+
+      const mentalTask =
+        mental.dailyMentalTasks[index % mental.dailyMentalTasks.length];
+
+      const physicalTask =
         physical.dailyPhysicalTasks[index % physical.dailyPhysicalTasks.length];
 
       return [
         {
           id: `food-${index}`,
-          title: f.nameProgram,
+          type: "food",
+          title: foodTask.nameProgram,
           reward: 10,
+          whatDoing: foodTask.whatDoing,
+          whyDoing: foodTask.whyDoing,
         },
+
         {
           id: `mental-${index}`,
-          title: m.nameProgram,
+          type: "mental",
+          title: mentalTask.nameProgram,
           reward: 10,
+          whatDoing: mentalTask.whatDoing,
+          whyDoing: mentalTask.whyDoing,
         },
+
         {
           id: `physical-${index}`,
-          title: p.nameProgram,
+          type: "physical",
+          title: physicalTask.nameProgram,
           reward: 15,
+          whatDoing: physicalTask.whatDoing,
+          whyDoing: physicalTask.whyDoing,
         },
       ];
     },
@@ -72,9 +90,32 @@ export const useTaskStore = defineStore("tasks", {
 
   actions: {
     init() {
+      const today = new Date().toDateString();
+
       if (!this.startDate) {
         this.startDate = new Date().toISOString();
       }
+
+      if (!this.lastVisitDate) {
+        this.lastVisitDate = today;
+        this.streak = 1;
+        return;
+      }
+
+      const lastVisit = new Date(this.lastVisitDate);
+      const currentDate = new Date(today);
+
+      const diffDays = Math.floor(
+        (currentDate.getTime() - lastVisit.getTime()) / (1000 * 60 * 60 * 24),
+      );
+
+      if (diffDays === 1) {
+        this.streak += 1;
+      } else if (diffDays > 1) {
+        this.streak = 1;
+      }
+
+      this.lastVisitDate = today;
     },
 
     completeTask(task: Task) {
