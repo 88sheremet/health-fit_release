@@ -11,6 +11,7 @@ import MindResultPage from "../pages/MindResultPage.vue";
 
 import DailyTasks from "../components/DailyTasks.vue";
 import WeeklyTask from "../components/WeeklyTask.vue";
+import Journal from "../components/Journal.vue";
 
 import NotFoundPage from "../pages/NotFoundPage.vue";
 
@@ -81,7 +82,10 @@ const router = createRouter({
       path: routes.recovery.weekly,
       component: WeeklyTask,
     },
-
+ {
+      path: routes.recovery.journal,
+      component: Journal,
+    },
     {
       path: "/:pathMatch(.*)*",
       component: NotFoundPage,
