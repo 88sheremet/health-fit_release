@@ -33,7 +33,7 @@
             unelevated
             color="green"
             class="complete-btn"
-            label="Выполнил задание"
+            label="Задание недели выполнено"
             :disable="!store.canComplete"
             @click="completeWeeklyTask"
           />
