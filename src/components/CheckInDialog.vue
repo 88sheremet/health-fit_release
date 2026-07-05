@@ -1,27 +1,17 @@
 <template>
-  <q-dialog
-    v-model="opened"
-    persistent
-    class="checkin-dialog"
-  >
+  <q-dialog v-model="opened" persistent class="checkin-dialog">
     <q-card class="checkin-card">
-
       <div class="hero">
-        
         <div class="title">
           Давай зафиксируем
-          <br>
+          <br />
           свое состояние
         </div>
 
-        <div class="subtitle">
-          Это займет меньше минуты
-        </div>
+        <div class="subtitle">Это займет меньше минуты</div>
       </div>
 
-      <div class="section-title">
-        Как ты себя чувствуешь?
-      </div>
+      <div class="section-title">Как ты себя чувствуешь?</div>
 
       <div class="moods">
         <button
@@ -41,9 +31,7 @@
         </button>
       </div>
 
-      <div class="section-title">
-        Опиши свое состояние
-      </div>
+      <div class="section-title">Опиши свое состояние</div>
 
       <q-input
         v-model="note"
@@ -54,13 +42,11 @@
       />
 
       <div class="tip-card">
-        <div class="tip-title">
-          📈 Зачем это нужно?
-        </div>
+        <div class="tip-title">📈 Зачем это нужно?</div>
 
         <div class="tip-text">
-          Мы будем строить график состояния и показывать,
-          как меняется твое самочувствие день за днем.
+          Мы будем строить график состояния и показывать, как меняется твое
+          самочувствие день за днем.
         </div>
       </div>
 
@@ -71,7 +57,6 @@
         label="Зафиксировать"
         @click="save"
       />
-
     </q-card>
   </q-dialog>
 </template>
@@ -83,10 +68,7 @@ const props = defineProps({
   modelValue: Boolean,
 });
 
-const emit = defineEmits([
-  "update:modelValue",
-  "save",
-]);
+const emit = defineEmits(["update:modelValue", "save"]);
 
 const note = ref("");
 
@@ -119,10 +101,6 @@ function save() {
 </script>
 
 <style>
-/* .checkin-dialog .q-dialog__backdrop {
-background: var(--grey-hover) !important;
-} */
-
 .checkin-card {
   width: 92%;
   max-width: 460px;
@@ -133,9 +111,7 @@ background: var(--grey-hover) !important;
 
   background: var(--grey-hover) !important;
 
-  box-shadow:
-    0 25px 70px var(--shadow-xl),
-    0 10px 30px var(--shadow-md);
+  box-shadow: 0 25px 70px var(--shadow-xl), 0 10px 30px var(--shadow-md);
 }
 
 /* HERO */
@@ -209,7 +185,7 @@ background: var(--grey-hover) !important;
 
   background: var(--grey-hover);
 
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .mood-btn.active {
@@ -217,9 +193,7 @@ background: var(--grey-hover) !important;
 
   transform: translateY(-2px);
 
-  box-shadow:
-    0 0 0 2px var(--green),
-    0 10px 20px var(--shadow-green);
+  box-shadow: 0 0 0 2px var(--green), 0 10px 20px var(--shadow-green);
 }
 
 .emoji {
@@ -288,6 +262,6 @@ background: var(--grey-hover) !important;
 }
 
 .save-btn:disabled {
-  opacity: .5;
+  opacity: 0.5;
 }
 </style>

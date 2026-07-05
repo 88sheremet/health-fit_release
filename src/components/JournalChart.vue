@@ -49,7 +49,7 @@ const store = useJournalStore();
 const router = useRouter();
 
 function goBack() {
- router.push(routes.recovery.journal)
+  router.push(routes.recovery.journal);
 }
 const chartData = computed(() => ({
   labels: store.entries.map((_, index) => index + 1),

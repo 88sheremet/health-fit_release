@@ -22,11 +22,7 @@ export const useJournalStore = defineStore("journal", {
     chartData(state) {
       return state.entries
         .slice()
-        .sort(
-          (a, b) =>
-            new Date(a.date).getTime() -
-            new Date(b.date).getTime()
-        )
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         .map((entry, index) => ({
           day: index + 1,
           mood: entry.mood,
@@ -48,21 +44,15 @@ export const useJournalStore = defineStore("journal", {
     init() {
       const today = new Date().toISOString().split("T")[0];
 
-      const lastCheckinDate =
-        localStorage.getItem("last-checkin-date");
+      const lastCheckinDate = localStorage.getItem("last-checkin-date");
 
       this.showCheckin = lastCheckinDate !== today;
     },
 
-    saveCheckin(payload: {
-      mood: 1 | 2 | 3 | 4 | 5;
-      note: string;
-    }) {
+    saveCheckin(payload: { mood: 1 | 2 | 3 | 4 | 5; note: string }) {
       const today = new Date().toISOString().split("T")[0];
 
-      const existingEntry = this.entries.find(
-        (entry) => entry.date === today
-      );
+      const existingEntry = this.entries.find((entry) => entry.date === today);
 
       if (existingEntry) {
         existingEntry.mood = payload.mood;
@@ -76,10 +66,7 @@ export const useJournalStore = defineStore("journal", {
         });
       }
 
-      localStorage.setItem(
-        "last-checkin-date",
-        today
-      );
+      localStorage.setItem("last-checkin-date", today);
 
       this.showCheckin = false;
     },
@@ -89,15 +76,11 @@ export const useJournalStore = defineStore("journal", {
     },
 
     getEntryByDate(date: string) {
-      return this.entries.find(
-        (entry) => entry.date === date
-      );
+      return this.entries.find((entry) => entry.date === date);
     },
 
     deleteEntry(id: string) {
-      this.entries = this.entries.filter(
-        (entry) => entry.id !== id
-      );
+      this.entries = this.entries.filter((entry) => entry.id !== id);
     },
   },
 
