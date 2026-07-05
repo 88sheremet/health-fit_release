@@ -12,6 +12,7 @@ import MindResultPage from "../pages/MindResultPage.vue";
 import DailyTasks from "../components/DailyTasks.vue";
 import WeeklyTask from "../components/WeeklyTask.vue";
 import Journal from "../components/Journal.vue";
+import JournalChart from "../components/JournalChart.vue";
 
 import NotFoundPage from "../pages/NotFoundPage.vue";
 
@@ -36,6 +37,7 @@ export const routes = {
     daily: "/daily",
     weekly: "/weekly",
     journal: "/journal",
+    journalChart: "/journal-chart",
   },
 } as const;
 
@@ -82,9 +84,14 @@ const router = createRouter({
       path: routes.recovery.weekly,
       component: WeeklyTask,
     },
- {
+
+    {
       path: routes.recovery.journal,
       component: Journal,
+    },
+    {
+      path: routes.recovery.journalChart,
+      component: JournalChart,
     },
     {
       path: "/:pathMatch(.*)*",
@@ -101,6 +108,7 @@ router.beforeEach((to, from, next) => {
     routes.recovery.daily,
     routes.recovery.weekly,
     routes.recovery.journal,
+    routes.recovery.journalChart,
   ];
 
   const isRecoveryRoute = recoveryRoutes.includes(to.path as any);

@@ -63,7 +63,7 @@
   font-style: normal;
   src:
     local("Roboto"),
-    url("../media/fonts/Roboto-Light.woff") format("woff");
+    url("../assets/Roboto-Light.woff") format("woff");
 }
 
 @font-face {
@@ -72,7 +72,7 @@
   font-style: normal;
   src:
     local("Roboto"),
-    url("../media/fonts/Roboto-Regular.woff") format("woff");
+    url("./assets/fonts/Roboto-Regular.woff") format("woff");
 }
 
 @font-face {
@@ -81,7 +81,7 @@
   font-style: normal;
   src:
     local("Roboto"),
-    url("../media/fonts/Roboto-Bold.woff") format("woff");
+    url("./assets/fonts/Roboto-Bold.woff") format("woff");
 }
 
 @font-face {
@@ -90,7 +90,7 @@
   font-style: normal;
   src:
     local("Inter"),
-    url("../media/fonts/Inter-Bold.woff") format("woff");
+    url("./assets/fonts/Inter-Bold.woff") format("woff");
 }
 
 @font-face {
@@ -99,7 +99,7 @@
   font-style: normal;
   src:
     local("Inter"),
-    url("../media/fonts/Inter-Black.woff") format("woff");
+    url("./assets/fonts/Inter-Black.woff") format("woff");
 }
 
 @font-face {
@@ -108,7 +108,7 @@
   font-style: normal;
   src:
     local("Inter"),
-    url("../media/fonts/Inter-Medium.woff") format("woff");
+    url("./assets/fonts/Inter-Medium.woff") format("woff");
 }
 
 @font-face {
@@ -117,7 +117,7 @@
   font-style: normal;
   src:
     local("Inter"),
-    url("../media/fonts/Inter-Regular.woff") format("woff");
+    url("./assets/fonts/Inter-Regular.woff") format("woff");
 }
 
 @font-face {
@@ -126,5 +126,5 @@
   font-style: normal;
   src:
     local("Inter"),
-    url("../media/fonts/Inter-Light.woff") format("woff");
+    url("./assets/fonts/Inter-Light.woff") format("woff");
 }
