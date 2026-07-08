@@ -92,9 +92,14 @@ export const useTaskStore = defineStore("tasks", {
     init() {
       const today = new Date().toDateString();
 
-      if (!this.startDate) {
-        this.startDate = new Date().toISOString();
-      }
+       if (!this.startDate) {
+    this.startDate = new Date().toISOString();
+
+    localStorage.setItem(
+      "recovery-start-date",
+      this.startDate
+    );
+  }
 
       if (!this.lastVisitDate) {
         this.lastVisitDate = today;

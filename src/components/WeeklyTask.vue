@@ -5,6 +5,7 @@
         <div class="header">
           <div class="title">Еженедельное задание</div>
           <div class="subtitle">Неделя {{ store.currentWeek }}</div>
+          <div class="week-day">День {{ store.currentDayWithinWeek }} из 7</div>
         </div>
 
         <q-card class="task-card">
@@ -37,7 +38,12 @@
             :disable="!store.canComplete"
             @click="completeWeeklyTask"
           />
-
+          <div
+            v-if="!store.canComplete && !store.isCompleted()"
+            class="week-info"
+          >
+            Выполнить задание можно на 6–7 день недели
+          </div>
           <q-banner v-else rounded class="success-banner">
             ✅ Задание недели выполнено
           </q-banner>
@@ -137,5 +143,22 @@ function completeWeeklyTask() {
 .success-banner {
   background: var(--green-bg);
   color: var(--green-deep);
+}
+.week-day {
+  margin-top: 6px;
+
+  font-size: 14px;
+
+  color: var(--green);
+}
+
+.week-info {
+  margin-top: 12px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  color: var(--grey);
 }
 </style>

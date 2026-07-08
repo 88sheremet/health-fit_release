@@ -66,7 +66,7 @@
             flat
             clickable
             class="action-card"
-            @click="$router.push('/journal-archive')"
+            @click="router.push(routes.recovery.journalArchive)"
           >
             <div class="action-icon blue-bg">
               <q-icon name="inventory_2" size="28px" color="primary" />
@@ -91,11 +91,11 @@
                 v-model="note"
                 outlined
                 autogrow
-                placeholder="Напишите свои мысли..."
+                placeholder="Напишите свои мысли или наблюдения..."
               />
             </q-card-section>
 
-            <q-card-actions align="right">
+            <q-card-actions align="right" class="q-card-wrapper">
               <q-btn flat label="Отмена" v-close-popup />
 
               <q-btn color="green" label="Сохранить" @click="saveNote" />
@@ -109,15 +109,21 @@
 </template>
 
 <script setup lang="ts">
+import { useJournalStore } from "../stores/journal";
+import { useRouter } from "vue-router";
 import BottomNavigation from "../components/BottomNavigation.vue";
-
+import { routes } from "../router/index";
+const router = useRouter();
+const journalStore = useJournalStore();
 import { ref } from "vue";
 
 const showNoteDialog = ref(false);
 const note = ref("");
 
 function saveNote() {
-  console.log(note.value);
+  if (!note.value.trim()) return;
+
+  journalStore.addNote(note.value);
 
   showNoteDialog.value = false;
   note.value = "";
@@ -308,7 +314,7 @@ function saveNote() {
   align-items: center;
   justify-content: center;
 
-  background: rgba(251, 140, 0, 0.12);
+  background: var(--icon-orange-bg2);
 }
 
 .dialog-card {
@@ -316,7 +322,10 @@ function saveNote() {
   max-width: 500px;
   border-radius: 24px;
 }
-
+.q-card-wrapper {
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
 .dialog-title {
   font-size: 22px;
   font-weight: 700;

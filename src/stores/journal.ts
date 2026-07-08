@@ -1,9 +1,8 @@
 import { defineStore } from "pinia";
-
 export interface JournalEntry {
   id: string;
   date: string;
-  mood: 1 | 2 | 3 | 4 | 5;
+  mood?: 1 | 2 | 3 | 4 | 5;
   note: string;
 }
 
@@ -82,6 +81,15 @@ export const useJournalStore = defineStore("journal", {
     deleteEntry(id: string) {
       this.entries = this.entries.filter((entry) => entry.id !== id);
     },
+    addNote(note: string) {
+  const today = new Date().toISOString().split("T")[0];
+
+  this.entries.push({
+    id: crypto.randomUUID(),
+    date: today,
+    note,
+  });
+},
   },
 
   persist: true,

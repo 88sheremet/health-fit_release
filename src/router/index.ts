@@ -13,7 +13,7 @@ import DailyTasks from "../components/DailyTasks.vue";
 import WeeklyTask from "../components/WeeklyTask.vue";
 import Journal from "../components/Journal.vue";
 import JournalChart from "../components/JournalChart.vue";
-
+import JournalArchive from "../pages/JournalArchive.vue";
 import NotFoundPage from "../pages/NotFoundPage.vue";
 
 import { getStartRoute } from "./getStartRoute";
@@ -38,6 +38,7 @@ export const routes = {
     weekly: "/weekly",
     journal: "/journal",
     journalChart: "/journal-chart",
+    journalArchive: "/journal-archive",
   },
 } as const;
 
@@ -92,6 +93,10 @@ const router = createRouter({
     {
       path: routes.recovery.journalChart,
       component: JournalChart,
+    },
+    {
+      path: routes.recovery.journalArchive,
+      component: JournalArchive,
     },
     {
       path: "/:pathMatch(.*)*",
