@@ -85,7 +85,6 @@ function formatDate(date: string) {
 .archive-page {
   min-height: 100vh;
   padding: 20px;
-
   background: var(--bg-gradient-main);
 }
 
@@ -93,26 +92,20 @@ function formatDate(date: string) {
   display: flex;
   align-items: center;
   gap: 12px;
-
   margin-bottom: 24px;
 }
 
 .title {
   font-size: 28px;
   font-weight: 700;
-
   color: var(--black1);
 }
 
 .entry-card {
   padding: 20px;
-
   margin-bottom: 16px;
-
   border-radius: 24px;
-
   background: var(--white);
-
   box-shadow: 0 10px 25px var(--shadow-md);
 }
 
@@ -120,14 +113,12 @@ function formatDate(date: string) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 12px;
 }
 
 .entry-date {
   font-size: 15px;
   font-weight: 600;
-
   color: var(--grey);
 }
 
@@ -138,13 +129,11 @@ function formatDate(date: string) {
 .entry-note {
   font-size: 16px;
   line-height: 1.7;
-
   color: var(--black1);
 }
 
 .empty-state {
   margin-top: 80px;
-
   text-align: center;
 }
 
@@ -154,16 +143,13 @@ function formatDate(date: string) {
 
 .empty-title {
   margin-top: 20px;
-
   font-size: 24px;
   font-weight: 700;
 }
 
 .empty-text {
   margin-top: 10px;
-
   color: var(--grey);
-
   line-height: 1.6;
 }
 </style>

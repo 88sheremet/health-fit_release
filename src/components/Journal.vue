@@ -167,27 +167,20 @@ function saveNote() {
   width: 120px;
   height: 120px;
   border-radius: 32px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--gradient-purple);
-
   box-shadow: 0 12px 32px var(--shadow-xl);
-
   transform: rotate(-8deg);
 }
 
 .overview-card {
   display: flex;
   align-items: center;
-
   padding: 20px;
   margin-bottom: 20px;
-
   border-radius: 24px;
-
   background: var(--glass-heavy);
   box-shadow: 0 8px 24px var(--shadow-md);
 }
@@ -195,13 +188,10 @@ function saveNote() {
 .overview-icon {
   width: 64px;
   height: 64px;
-
   border-radius: 18px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--icon-green-bg);
 }
 
@@ -244,15 +234,10 @@ function saveNote() {
 .action-card {
   display: flex;
   align-items: center;
-
   padding: 18px;
-
   border-radius: 24px;
-
   background: var(--glass-heavy);
-
   box-shadow: 0 8px 24px var(--shadow-md);
-
   transition: 0.2s;
 }
 
@@ -267,9 +252,7 @@ function saveNote() {
 .action-icon {
   width: 64px;
   height: 64px;
-
   border-radius: 20px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,13 +290,10 @@ function saveNote() {
 .plus-circle {
   width: 52px;
   height: 52px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--icon-orange-bg2);
 }
 
@@ -322,10 +302,12 @@ function saveNote() {
   max-width: 500px;
   border-radius: 24px;
 }
+
 .q-card-wrapper {
   padding-right: 15px;
   padding-bottom: 15px;
 }
+
 .dialog-title {
   font-size: 22px;
   font-weight: 700;

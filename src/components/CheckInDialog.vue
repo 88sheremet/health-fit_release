@@ -151,7 +151,6 @@ function save() {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-
   margin-bottom: 28px;
 }
 

@@ -100,15 +100,11 @@ function completeWeeklyTask() {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-
   background: var(--green-bg);
   color: var(--green-deep);
-
   padding: 8px 14px;
   border-radius: 999px;
-
   font-weight: 600;
-
   margin-bottom: 20px;
 }
 
@@ -144,21 +140,17 @@ function completeWeeklyTask() {
   background: var(--green-bg);
   color: var(--green-deep);
 }
+
 .week-day {
   margin-top: 6px;
-
   font-size: 14px;
-
   color: var(--green);
 }
 
 .week-info {
   margin-top: 12px;
-
   text-align: center;
-
   font-size: 14px;
-
   color: var(--grey);
 }
 </style>

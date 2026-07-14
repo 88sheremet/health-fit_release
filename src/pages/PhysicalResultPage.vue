@@ -93,97 +93,70 @@ import { routes } from "../router/index";
 
 .hero-title {
   font-size: 34px;
-
   font-weight: 700;
-
   line-height: 1.15;
-
- color: var(--black1);
-
+  color: var(--black1);
   margin-bottom: 16px;
 }
 
 .hero-subtitle {
   font-size: 17px;
-
   line-height: 1.6;
-
-color: var(--grey2);
+  color: var(--grey2);
 }
 
 .result-card,
 .info-card,
 .recovery-card {
   padding: 24px;
-
   border-radius: 28px;
-
   margin-bottom: 18px;
-
   background: var(--hero-icon);
-
   backdrop-filter: blur(16px);
-
   box-shadow: 0 10px 35px var(--shadow-md);
 }
 
 .card-title {
   font-size: 15px;
-
   font-weight: 700;
-
   color: var(--orange);
-
   margin-bottom: 14px;
 }
 
 .card-main {
   font-size: 28px;
-
   font-weight: 700;
-
   line-height: 1.2;
-
- color: var(--black1);
+  color: var(--black1);
 }
 
 .divider {
   height: 1px;
-
   background: var(--shadow-lg);
-
   margin: 20px 0;
 }
 
 .card-list {
   display: flex;
-
   flex-direction: column;
-
   gap: 12px;
-
   font-size: 16px;
-
   line-height: 1.5;
-
   color: var(--grey-dark);
 }
 
 .info-title {
   font-size: 22px;
-
   font-weight: 700;
-
   margin-bottom: 14px;
 }
 
 .info-text {
   font-size: 16px;
-
   line-height: 1.7;
-
- color: var(--grey2);
+  color: var(--grey2);
 }
+
 .bottom-action {
   position: fixed;
   left: 0;
@@ -205,6 +178,6 @@ color: var(--grey2);
   font-weight: 700;
   background: var(--main-btn);
   color: var(--white);
- box-shadow: 0 10px 30px rgba(251, 140, 0, 0.35);
+  box-shadow: 0 10px 30px rgba(251, 140, 0, 0.35);
 }
 </style>
