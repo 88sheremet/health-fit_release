@@ -75,7 +75,6 @@ export const useJournalStore = defineStore("journal", {
     },
     addNote(note: string) {
   const today = new Date().toISOString().split("T")[0];
-
   this.entries.push({
     id: crypto.randomUUID(),
     date: today,

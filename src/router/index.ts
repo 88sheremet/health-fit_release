@@ -114,6 +114,7 @@ router.beforeEach((to, from, next) => {
     routes.recovery.weekly,
     routes.recovery.journal,
     routes.recovery.journalChart,
+    routes.recovery.journalArchive,
   ];
 
   const isRecoveryRoute = recoveryRoutes.includes(to.path as any);

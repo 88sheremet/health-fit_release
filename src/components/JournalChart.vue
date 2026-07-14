@@ -52,18 +52,15 @@ function goBack() {
   router.push(routes.recovery.journal);
 }
 const chartData = computed(() => ({
-  labels: store.entries.map((_, index) => index + 1),
-
+  labels: store.entries.map((entry) =>
+    new Date(entry.date).toLocaleDateString("ru-RU", { day: "2-digit", month: "2-digit" })
+  ),
   datasets: [
     {
       data: store.entries.map((entry) => entry.mood),
-
       borderColor: "#4caf50",
-
       backgroundColor: "#4caf50",
-
       tension: 0.4,
-
       pointRadius: 6,
     },
   ],
@@ -71,13 +68,11 @@ const chartData = computed(() => ({
 
 const chartOptions = {
   responsive: true,
-
   plugins: {
     legend: {
       display: false,
     },
   },
-
   scales: {
     x: {
       title: {
@@ -85,14 +80,11 @@ const chartOptions = {
         text: "Дни",
       },
     },
-
     y: {
       min: 1,
       max: 5,
-
       ticks: {
         stepSize: 1,
-
         callback(value: number) {
           const moods = {
             1: "😡",
@@ -101,7 +93,6 @@ const chartOptions = {
             4: "🙂",
             5: "😄",
           };
-
           return moods[value] || "";
         },
       },
