@@ -36,6 +36,7 @@ import {
   LineElement,
   Tooltip,
 } from "chart.js";
+import { moodEmojis } from "../constants/moods";
 
 ChartJS.register(
   CategoryScale,
@@ -86,14 +87,7 @@ const chartOptions = {
       ticks: {
         stepSize: 1,
         callback(value: number) {
-          const moods = {
-            1: "😡",
-            2: "😞",
-            3: "😐",
-            4: "🙂",
-            5: "😄",
-          };
-          return moods[value] || "";
+          return moodEmojis[value] || "";
         },
       },
     },

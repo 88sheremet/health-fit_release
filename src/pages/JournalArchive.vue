@@ -53,6 +53,7 @@ import { computed } from "vue";
 import { useJournalStore } from "../stores/journal";
 import { useRouter } from "vue-router";
 import { routes } from "../router/index";
+import { moodEmojis } from "../constants/moods";
 const router = useRouter();
 const store = useJournalStore();
 
@@ -61,15 +62,7 @@ const entries = computed(() => {
 });
 
 function getMoodEmoji(mood: number) {
-  const moods = {
-    1: "😡",
-    2: "😞",
-    3: "😐",
-    4: "🙂",
-    5: "😄",
-  };
-
-  return moods[mood] || "😐";
+  return moodEmojis[mood] || "😐";
 }
 
 function formatDate(date: string) {

@@ -63,6 +63,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { moodOptions } from "../constants/moods";
 
 const props = defineProps({
   modelValue: Boolean,
@@ -74,13 +75,7 @@ const note = ref("");
 
 const mood = ref<number | null>(null);
 
-const moods = [
-  { value: 5, emoji: "😄", label: "Отлично" },
-  { value: 4, emoji: "🙂", label: "Хорошо" },
-  { value: 3, emoji: "😐", label: "Нормально" },
-  { value: 2, emoji: "😞", label: "Плохо" },
-  { value: 1, emoji: "😡", label: "Тяжело" },
-];
+const moods = moodOptions;
 
 const opened = computed({
   get: () => props.modelValue,
