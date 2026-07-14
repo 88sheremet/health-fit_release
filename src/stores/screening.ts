@@ -1,23 +1,9 @@
 import { defineStore } from "pinia";
 
-interface Question {
-  id: number;
-  text: string;
-}
-
-interface Block {
-  id: number;
-  title: string;
-  questions: Question[];
-}
-
-interface Answers {
-  [key: string]: number;
-}
-
-interface BlockScores {
-  [key: string]: number;
-}
+import { Question } from "../interfaces/Question.interface";
+import { Block } from "../interfaces/Block.interface";
+import { Answers } from "../interfaces/Answers.interface";
+import { BlockScores } from "../interfaces/BlockScores.interface";
 
 export const useScreeningStore = defineStore("screening", {
   state: () => ({

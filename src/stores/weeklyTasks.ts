@@ -2,15 +2,8 @@ import { defineStore } from "pinia";
 import weeklyTasks from "../mocks/weeklyTasks/weeklyTasks.json";
 import { useTaskStore } from "./dailyTasks";
 
-interface WeeklyTask {
-  nameProgram: string;
-  whatDoing: string;
-  whyDoing: string;
-}
-
-interface WeeklyState {
-  completed: Record<number, boolean>;
-}
+import { WeeklyTask } from "../interfaces/WeeklyTask.interface";
+import { WeeklyState } from "../interfaces/WeeklyState.interface";
 
 export const useWeeklyTaskStore = defineStore("weeklyTasks", {
   state: (): WeeklyState => ({

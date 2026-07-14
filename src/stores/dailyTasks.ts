@@ -5,21 +5,8 @@ import food from "../mocks/dailyTasks/dailyFoodTasks.json";
 import mental from "../mocks/dailyTasks/dailyMentalTasks.json";
 import physical from "../mocks/dailyTasks/dailyPhysicalTasks.json";
 
-interface Task {
-  id: string;
-  type: "food" | "mental" | "physical";
-  title: string;
-  reward: number;
-  whatDoing: any;
-  whyDoing: string;
-}
-interface TaskState {
-  startDate: string;
-  completed: Record<string, boolean>;
-  energy: number;
-  streak: number;
-  lastVisitDate: string;
-}
+import { Task } from "../interfaces/Task.interface";
+import { TaskState } from "../interfaces/TaskState.interface";
 
 export const useTaskStore = defineStore("tasks", {
   state: (): TaskState => ({
