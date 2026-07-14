@@ -76,6 +76,10 @@
       </q-page>
     </q-page-container>
     <TaskDetailsDialog v-model="showDialog" :task="selectedTask" />
+    <CheckInDialog
+  v-model="journalStore.showCheckin"
+  @save="journalStore.saveCheckin"
+/>
     <BottomNavigation />
   </q-layout>
 </template>
@@ -85,14 +89,15 @@ import { ref, computed, onMounted } from "vue";
 import BottomNavigation from "../components/BottomNavigation.vue";
 import { useTaskStore } from "../stores/dailyTasks";
 import TaskDetailsDialog from "../components/TaskDetailsDialog.vue";
-
+import { useJournalStore } from "../stores/journal";
 import click from "../assets/click.png";
+import CheckInDialog from "../components/CheckInDialog.vue"
 
 const store = useTaskStore();
 const tasks = computed(() => store.todayTasks);
 const selectedTask = ref(null);
 const showDialog = ref(false);
-
+const journalStore = useJournalStore();
 function openTask(task) {
   selectedTask.value = task;
   showDialog.value = true;
@@ -100,6 +105,7 @@ function openTask(task) {
 
 onMounted(() => {
   store.init();
+    journalStore.init();
 });
 </script>
 

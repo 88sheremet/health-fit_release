@@ -56,30 +56,24 @@ import { routes } from "../router/index";
 <style scoped lang="scss">
 .welcome-page {
   min-height: 100vh;
-
   background: var(--bg-gradient-main);
-
   padding: 24px;
 }
 
 .welcome-container {
   width: 100%;
   max-width: 420px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   min-height: 100vh;
 }
 
 .hero-section {
   margin-top: 40px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   text-align: center;
 }
 
@@ -93,7 +87,6 @@ import { routes } from "../router/index";
   justify-content: center;
   margin-bottom: 28px;
   background: var(--hero-icon);
-
   backdrop-filter: blur(12px);
 
   span {
@@ -118,7 +111,7 @@ import { routes } from "../router/index";
   font-weight: 700;
   line-height: 1.1;
   margin: 0 0 16px;
- color: var(--black1);
+  color: var(--black1);
 }
 
 .subtitle {
@@ -130,22 +123,16 @@ import { routes } from "../router/index";
 
 .benefits-card {
   margin-top: 40px;
-
   padding: 24px;
-
   border-radius: 28px;
-
   background: var(--hero-icon);
-
   backdrop-filter: blur(14px);
-
   box-shadow: 0 10px 40px var(--shadow-lg);
 }
 
 .benefit-item {
   display: flex;
   align-items: center;
-
   gap: 16px;
 
   &:not(:last-child) {
@@ -156,26 +143,19 @@ import { routes } from "../router/index";
 .benefit-icon {
   width: 42px;
   height: 42px;
-
   border-radius: 14px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--grey-icon-bg);
-
   font-size: 20px;
-
   flex-shrink: 0;
 }
 
 .benefit-text {
   font-size: 16px;
   line-height: 1.4;
-
- color: var(--black1);
-
+  color: var(--black1);
   font-weight: 500;
 }
 
@@ -198,11 +178,8 @@ import { routes } from "../router/index";
 
 .hint-text {
   text-align: center;
-
   margin-top: 14px;
-
   font-size: 14px;
-
   color: var(--grey);
 }
 

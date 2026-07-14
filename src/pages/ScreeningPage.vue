@@ -157,22 +157,16 @@ const startQuestions = () => {
 
 .info-card {
   margin-top: 42px;
-
   padding: 26px 22px;
-
   border-radius: 28px;
-
   background: var(--hero-icon);
-
   backdrop-filter: blur(16px);
-
   box-shadow: 0 10px 40px var(--shadow-lg);
 }
 
 .info-item {
   display: flex;
   align-items: center;
-
   gap: 18px;
 
   &:not(:last-child) {
@@ -183,15 +177,11 @@ const startQuestions = () => {
 .info-icon {
   width: 52px;
   height: 52px;
-
   border-radius: 16px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 24px;
-
   flex-shrink: 0;
 }
 
@@ -213,50 +203,38 @@ const startQuestions = () => {
 .info-title {
   font-size: 17px;
   font-weight: 600;
-
   color: var(--black1);
-
   margin-bottom: 4px;
 }
 
 .info-text {
   font-size: 15px;
   line-height: 1.5;
-
   color: var(--grey2);
 }
 
 .bottom-section {
   margin-top: auto;
-
   padding-top: 42px;
   padding-bottom: 24px;
 }
 
 .hint-text {
   text-align: center;
-
   font-size: 15px;
   line-height: 1.5;
-
   color: var(--grey);
-
   margin-bottom: 22px;
 }
 
 .start-btn {
   width: 100%;
   height: 60px;
-
   border-radius: 18px;
-
   font-size: 18px;
   font-weight: 700;
-
   background: var(--start-btn);
-
   color: var(--white);
-
   box-shadow: var(--start-btn-shadow);
 }
 
